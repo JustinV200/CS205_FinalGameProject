@@ -6,19 +6,17 @@
  * Name: David Krumov
  * Section: 9 AM
  * Date: 11/11/2024
- * Time: 3:19 PM
+ * Time: 3:32 PM
  *
  * Project: csci205_final_project
- * Package: org.StarWarsFinalProject
- * Class: Movement
+ * Package: org.StarWarsFinalProject.Model
+ * Class: ProjectManager
  *
  * Description:
  *
  * ****************************************
  */
-package org.StarWarsFinalProject;
-// Movement class for the characters
+package org.StarWarsFinalProject.Model;
 
-public class Movement {
-
+public class ProjectManager {
 }
