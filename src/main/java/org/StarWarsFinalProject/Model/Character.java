@@ -90,4 +90,13 @@ public class Character {
         double blockedDamage = damage * 0.5;
         this.health -= blockedDamage;
     }
+
+    /**
+     * gets the health of the character
+     *
+     * @return the health of the character
+     */
+    public double getHealth() {
+        return health;
+    }
 }
