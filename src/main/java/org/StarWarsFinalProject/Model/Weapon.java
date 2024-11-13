@@ -19,4 +19,13 @@
 package org.StarWarsFinalProject.Model;
 
 public class Weapon {
+    private double damage;
+    private String weaponType;
+    public Weapon(double damage, String weaponType){
+        this.damage = damage;
+        this.weaponType = weaponType;
+    }
+    public double getDamage() {
+        return damage;
+    }
 }
