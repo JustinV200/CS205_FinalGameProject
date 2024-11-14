@@ -47,7 +47,7 @@ public class Movement {
         input.addAction(new UserAction("Move Right") {
             @Override
             protected void onAction() {
-                character.moveChRight();
+                character.moveRight();
                 characterView.updateView();
             }
         }, KeyCode.D);
@@ -56,7 +56,7 @@ public class Movement {
         input.addAction(new UserAction("Move Left") {
             @Override
             protected void onAction() {
-                character.moveChLeft();
+                character.moveLeft();
                 characterView.updateView();
             }
         }, KeyCode.A);
@@ -65,7 +65,7 @@ public class Movement {
         input.addAction(new UserAction("Move Up") {
             @Override
             protected void onAction() {
-                character.moveChUp();
+                character.moveUp();
                 characterView.updateView();
             }
         }, KeyCode.W);
@@ -74,7 +74,7 @@ public class Movement {
         input.addAction(new UserAction("Move Down") {
             @Override
             protected void onAction() {
-                character.moveChDown();
+                character.moveDown();
                 characterView.updateView();
             }
         }, KeyCode.S);

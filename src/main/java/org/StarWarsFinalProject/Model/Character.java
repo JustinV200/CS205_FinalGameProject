@@ -90,14 +90,14 @@ public class Character {
      * moves the character's y coordinate to up
      */
     public void moveDown() {
-        this.yCord -= JUMP;
+        this.yCord += JUMP;
     }
 
     /**
      * moves the character's x coordinate down
      * */
     public void moveUp() {
-        this.yCord += JUMP;
+        this.yCord -= JUMP;
     }
 
     /**
@@ -191,4 +191,5 @@ public class Character {
     public void setY(double y) {
         this.yCord = y;
     }
+
 }
