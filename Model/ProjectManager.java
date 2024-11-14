@@ -54,27 +54,39 @@ public class ProjectManager {
     }
 
     /**
-     *  a method which determine who is the winner after
-     *  a certain amount of rounds
+     *  a method which determine who is the winner of a round
+     *  and increments their number of wins
      */
     private void determineWinner() {
-
+        if (player1.isAlive() == false) {
+            updateWins(player2);
+        }
+        if (player2.isAlive() == true) {
+            updateWins(player1);
+        }
     }
 
     /**
      * updates the wins in each character class depending
      * on who has one the round
      */
-    public void updateWins() {
-
+    public void updateWins(Character player) {
+        player.roundsWon += 1;
     }
 
     /**
      * a method which determines if the game is over
+     * a character wins a game by 2 won rounds
      *
      * @return true if the game has finished, and false if not
      */
     private Boolean gameFinished() {
+        if player1.roundsWon - player2.roundsWon >= 2 {
+            return true;
+        }
+        if player2.roundsWon - player2.roundsWon >= 2 {
+            return true;
+        }
         return false;
     }
 }
