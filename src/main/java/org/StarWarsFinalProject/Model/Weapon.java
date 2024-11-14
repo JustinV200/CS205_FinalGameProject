@@ -18,7 +18,7 @@
  */
 package org.StarWarsFinalProject.Model;
 
-public class Weapon {
+public abstract class Weapon {
     private double damage;
     private String weaponType;
     public Weapon(double damage, String weaponType){

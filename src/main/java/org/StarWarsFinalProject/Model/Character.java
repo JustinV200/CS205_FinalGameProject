@@ -32,7 +32,9 @@ public class Character {
     /** character's weapon */
     private Weapon weapon;
 
+    private int xCord;
 
+    private int yCord;
 
     /**
      * Constructor for character class
@@ -41,10 +43,12 @@ public class Character {
      * @param name - name of the character
      * @param weapon - character's weapon
      */
-    public Character(double health, String name, Weapon weapon) {
+    public Character(double health, String name, Weapon weapon, int xCord, int yCord) {
         this.health = health;
         this.name = name;
         this.weapon = weapon;
+        this.xCord = xCord;
+        this.yCord = yCord;
     }
 
     /**
@@ -52,7 +56,7 @@ public class Character {
      *
      * @param damage - the amount of damage inflicted from another opponent to the character
      */
-    public void takeDamage(int damage) {
+    public void takeDamage(double damage) {
         this.health -= damage;
 
     }
@@ -63,7 +67,7 @@ public class Character {
      * @param opponent - another character that will take damage
      */
     public void attack (Character opponent) {
-        int damage = this.weapon.getAttack();
+        double damage = this.weapon.getDamage();
         opponent.takeDamage(damage);
     }
 
@@ -86,7 +90,7 @@ public class Character {
      *
      * @param damage - the amount of damage inflicted from another opponent to the character
      */
-    public void block(int damage) {
+    public void block(double damage) {
         double blockedDamage = damage * 0.5;
         this.health -= blockedDamage;
     }

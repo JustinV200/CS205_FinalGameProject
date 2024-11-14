@@ -1,7 +1,9 @@
 package org.StarWarsFinalProject.Model;
 public class Bullets {
+
     private int x;
     private int y;
+
     public Bullets(int x, int y) {
         this.x = x;
         this.y = y;

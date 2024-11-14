@@ -18,32 +18,39 @@
  */
 package org.StarWarsFinalProject.Model;
 
+import java.util.ArrayList;
+
 public class Blaster extends Weapon {
-    public double fireRate;
-    ArrayList<Bullets> projectiles = new ArrayList<>();
+    private double fireRate;
+    private ArrayList<Bullets> projectiles;
+
     public Blaster(double damage, String weaponType, double fireRate) {
         super(damage, weaponType);
         this.fireRate = fireRate;
-
+        this.projectiles = new ArrayList<>();
     }
     //takes in the location of the character, generates bullet at that location and fires
     public void shoot(int x, int y){
-        projectiles.add(new Bullets(x, y));
+        this.projectiles.add(new Bullets(x, y));
     }
+
     //clear the projectiles list of bullets
     public void clear(){
-        projectiles.clear();
+        this.projectiles.clear();
     }
+
     //first, move each bullet by its respective speed, currently set to 1, then, check for collisions with the enemy Character
-    public boolean checkBullets(){
-        for (bullet:projectiles){
+    public boolean checkBullets() {
+        for (Bullets bullet : this.projectiles) {
             bullet.move(1);
-            if(bullet.checkCollision() == true){
+            if (bullet.checkCollision() == true) {
                 return true;
             }
             //TODO, delete bullets
             //Psuedocode: if(bullet.x > certain number)
             // then delete it,
         }
+        return false;
     }
+
 }
