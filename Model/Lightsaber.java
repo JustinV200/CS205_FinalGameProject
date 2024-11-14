@@ -46,7 +46,7 @@ public class Lightsaber extends Weapon {
         }
     }
 
-    //TODO colosion detection and return will be done javaFXGL
+    //TODO collision detection and return will be done javaFXGL
     public boolean checkCollision() {
         return true;
     }

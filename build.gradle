@@ -34,14 +34,19 @@ test {
 }
 
 // Needs to be 17, ideally, it should match your JDK
-javafx {
-    version = "22.0.1"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
-}
+//javafx {
+//    version = "22.0.1"
+//    modules = [ 'javafx.controls', 'javafx.fxml' ]
+//}
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'com.github.almasb:fxgl:17.1' // Or your desired version
+}
+javafx {
+    version = "17.0.2" // Or your desired version
+    modules = [ 'javafx.controls', 'javafx.fxml' ] // Add other modules as needed
 }
 
 application {
