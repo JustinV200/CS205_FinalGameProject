@@ -5,11 +5,16 @@ import org.StarWarsFinalProject.Model.Character;
 import org.StarWarsFinalProject.View.CharacterView;
 import org.StarWarsFinalProject.Controller.Movement;
 
+import javafx.scene.paint.Color;
+
 public class GameApp extends GameApplication {
 
-    private Movement movement;
+    private Movement playerMovement;
+    private Movement oppMovement;
     private Character character;
-    private CharacterView characterView;
+    private Character opponent;
+    private CharacterView playerView;
+    private CharacterView opponentView;
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -19,11 +24,16 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void initGame() {
+
         character = new Character(100, "Player", 100, 100);
-        characterView = new CharacterView(character);
+        opponent = new Character(100, "Opp", 500, 500);
 
+        playerView = new CharacterView(character, Color.RED, EntityType.PLAYER);
+        opponentView = new CharacterView(opponent, Color.BLUE, EntityType.OPPONENT);
 
-        movement = new Movement(character, characterView);
+        playerMovement = new Movement(character, playerView, EntityType.PLAYER);
+        oppMovement = new Movement(opponent, opponentView, EntityType.OPPONENT);
+
     }
 
     public static void main(String[] args) {
