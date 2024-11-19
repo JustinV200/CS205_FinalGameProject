@@ -18,14 +18,23 @@
  */
 package org.StarWarsFinalProject.Model;
 
+import org.StarWarsFinalProject.EntityType;
+
 public abstract class Weapon {
     private double damage;
     private String weaponType;
-    public Weapon(double damage, String weaponType){
+    private EntityType entityType;
+    public Weapon(double damage, String weaponType, EntityType type){
         this.damage = damage;
         this.weaponType = weaponType;
+        this.entityType=type;
     }
     public double getDamage() {
         return damage;
     }
+
+    public EntityType getType() {
+        return this.entityType;
+    }
+
 }
