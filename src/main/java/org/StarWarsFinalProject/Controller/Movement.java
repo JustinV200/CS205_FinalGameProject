@@ -24,6 +24,7 @@ import javafx.scene.input.KeyCode;
 import org.StarWarsFinalProject.EntityType;
 import org.StarWarsFinalProject.Model.Character;
 import org.StarWarsFinalProject.View.CharacterView;
+import org.StarWarsFinalProject.View.WeaponView;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.onKey;
 
@@ -36,9 +37,12 @@ public class Movement {
 
     private CharacterView characterView;
 
-    public Movement(Character character, CharacterView characterView, EntityType type) {
+    private WeaponView weaponView;
+
+    public Movement(Character character, CharacterView characterView, EntityType type, WeaponView weaponView) {
         this.character = character;
         this.characterView = characterView;
+        this.weaponView = weaponView;
         if (type == EntityType.PLAYER) {
             PlayerinitInput();
         }
@@ -57,6 +61,7 @@ public class Movement {
             protected void onAction() {
                 character.moveRight();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.D);
 
@@ -66,6 +71,7 @@ public class Movement {
             protected void onAction() {
                 character.moveLeft();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.A);
 
@@ -75,6 +81,7 @@ public class Movement {
             protected void onAction() {
                 character.moveUp();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.W);
 
@@ -84,6 +91,7 @@ public class Movement {
             protected void onAction() {
                 character.moveDown();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.S);
     }
@@ -97,6 +105,7 @@ public class Movement {
             protected void onAction() {
                 character.moveRight();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.RIGHT);
 
@@ -106,6 +115,7 @@ public class Movement {
             protected void onAction() {
                 character.moveLeft();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.LEFT);
 
@@ -115,6 +125,7 @@ public class Movement {
             protected void onAction() {
                 character.moveUp();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.UP);
 
@@ -124,6 +135,7 @@ public class Movement {
             protected void onAction() {
                 character.moveDown();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.DOWN);
     }

@@ -10,7 +10,7 @@ import org.StarWarsFinalProject.Model.Lightsaber;
 import org.StarWarsFinalProject.Model.Weapon;
 import org.StarWarsFinalProject.View.CharacterView;
 import org.StarWarsFinalProject.Controller.Movement;
-import org.StarWarsFinalProject.View.weaponView;
+import org.StarWarsFinalProject.View.WeaponView;
 
 public class GameApp extends GameApplication {
 
@@ -21,8 +21,11 @@ public class GameApp extends GameApplication {
     private Character opponent;
     private CharacterView opponentView;
 
-    private Weapon weapon;
-    private weaponView theWeaponView;
+    private Weapon chWeapon;
+    private WeaponView chWeaponView;
+
+    private Weapon oppWeapon;
+    private WeaponView oppWeaponView;
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -34,13 +37,16 @@ public class GameApp extends GameApplication {
     protected void initGame() {
         character = new Character(100, "Player", 100, 100);
         characterView = new CharacterView(character, EntityType.PLAYER, Color.BLUE);
+        chWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.WEAPON);
+        chWeaponView = new WeaponView(chWeapon, characterView);
+        movement = new Movement(character, characterView, EntityType.PLAYER, chWeaponView);
+
 
         opponent = new Character(100, "Opponent", 300, 100);
         opponentView = new CharacterView(opponent, EntityType.OPPONENT, Color.RED);
-
-        weapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.WEAPON);
-        theWeaponView= new weaponView(weapon, characterView);
-        movement = new Movement(character, characterView, theWeaponView);
+        oppWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.WEAPON);
+        oppWeaponView = new WeaponView(oppWeapon, characterView);
+        movement = new Movement(character, characterView, EntityType.OPPONENT, oppWeaponView);
     }
     protected void initPhysics(){
         FXGL.getPhysicsWorld().addCollisionHandler(new playerOpponentCollisionHandler(characterView));

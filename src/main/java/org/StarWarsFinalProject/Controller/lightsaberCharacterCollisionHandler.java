@@ -23,11 +23,11 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import org.StarWarsFinalProject.EntityType;
 import org.StarWarsFinalProject.View.CharacterView;
-import org.StarWarsFinalProject.View.weaponView;
+import org.StarWarsFinalProject.View.WeaponView;
 
 public class lightsaberCharacterCollisionHandler extends CollisionHandler {
 
-    public lightsaberCharacterCollisionHandler(weaponView weapon, CharacterView player, CharacterView opponent) {
+    public lightsaberCharacterCollisionHandler(WeaponView weapon, CharacterView player, CharacterView opponent) {
         super(EntityType.WEAPON, EntityType.OPPONENT);
     }
 
