@@ -34,6 +34,9 @@ public class Character {
     /** health of the character */
     private double health;
 
+    /** maximum health of the character*/
+    private double maxHealth;
+
     /** name of the character */
     private String name;
 
@@ -65,6 +68,7 @@ public class Character {
      */
     public Character(double health, String name,  int xCord, int yCord) {
         this.health = health;
+        this.maxHealth = health;
         this.name = name;
         //this.weapon = weapon;
         this.xCord = xCord;
