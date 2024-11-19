@@ -18,7 +18,6 @@
 */
 package org.StarWarsFinalProject.Controller;
 
-import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import javafx.scene.input.KeyCode;
@@ -28,7 +27,9 @@ import org.StarWarsFinalProject.View.CharacterView;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.onKey;
 
-
+/**
+ * This is class for moving the characters
+ */
 public class Movement {
 
     private Character character;
@@ -44,8 +45,6 @@ public class Movement {
         else {
             OppinitInput();
         }
-
-
     }
 
 
