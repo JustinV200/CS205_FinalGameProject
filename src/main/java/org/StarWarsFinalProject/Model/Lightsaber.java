@@ -18,13 +18,15 @@
  */
 package org.StarWarsFinalProject.Model;
 
+import org.StarWarsFinalProject.EntityType;
+
 public class Lightsaber extends Weapon {
 
     private double heavyHitRadius;
     private double lightHitRadius;
 
-    public Lightsaber(double damage,String weaponType,double heavyHitRadius,double lightHitRadius) {
-        super(damage, weaponType);
+    public Lightsaber(double damage,String weaponType,double heavyHitRadius,double lightHitRadius, EntityType type) {
+        super(damage, weaponType, type);
         this.heavyHitRadius = heavyHitRadius;
         this.lightHitRadius = lightHitRadius;
     }
@@ -32,7 +34,7 @@ public class Lightsaber extends Weapon {
     /**
      * Performs a heavy attack
      * This attack will have a larger hit radius and do more damage
-     */
+
     // TODO not all done
     public void HeavyHit(Character opponent) {
         if (checkCollision(opponent, this.heavyHitRadius)) {
@@ -45,25 +47,21 @@ public class Lightsaber extends Weapon {
             opponent.takeDamage(super.getDamage());
         }
     }
-
-    //TODO collision detection and return will be done javaFXGL
-    public boolean checkCollision() {
-        return true;
-    }
-
+     */
     public double getHeavyHitRadius() {
-        return HeavyHitRadius;
+        return this.heavyHitRadius;
     }
 
     public double getLightHitRadius() {
-        return LightHitRadius;
+        return this.lightHitRadius;
     }
 
     public void setHeavyHitRadius(double HeavyHitRadius) {
-        this.HeavyHitRadius = HeavyHitRadius;
+        this.heavyHitRadius = HeavyHitRadius;
     }
 
     public void setLightHitRadius(double LightHitRadius) {
-        this.LightHitRadius = LightHitRadius;
+        this.lightHitRadius = LightHitRadius;
     }
+
 }
