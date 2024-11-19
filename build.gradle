@@ -51,7 +51,7 @@ javafx {
 
 application {
     mainModule.set("csci205_final_project")
-    mainClass.set("org.StarWarsFinalProject.Main")
+    mainClass.set("org.StarWarsFinalProject.GameApp")
     if (project.hasProperty("mainClass")) {
         mainClass.set(project.property("mainClass").toString())
     }
