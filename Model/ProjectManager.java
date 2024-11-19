@@ -70,7 +70,7 @@ public class ProjectManager {
      * updates the wins in each character class depending
      * on who has one the round
      */
-    public void updateWins(Character player) {
+    private void updateWins(Character player) {
         player.roundsWon += 1;
     }
 
@@ -80,7 +80,7 @@ public class ProjectManager {
      *
      * @return true if the game has finished, and false if not
      */
-    private Boolean gameFinished() {
+    public Boolean gameFinished() {
         if player1.roundsWon - player2.roundsWon >= 2 {
             return true;
         }

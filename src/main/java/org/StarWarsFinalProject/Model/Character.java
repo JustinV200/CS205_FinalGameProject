@@ -34,6 +34,9 @@ public class Character {
     /** health of the character */
     private double health;
 
+    /** maximum health of the character*/
+    private double maxHealth;
+
     /** name of the character */
     private String name;
 
@@ -65,6 +68,7 @@ public class Character {
      */
     public Character(double health, String name,  int xCord, int yCord) {
         this.health = health;
+        this.maxHealth = health;
         this.name = name;
         //this.weapon = weapon;
         this.xCord = xCord;
@@ -76,6 +80,9 @@ public class Character {
      * moves the character's x coordinate to the right
      */
     public void moveRight() {
+        if (this.xCord + 5 > 800){
+            this.xCord = 0;
+        }
         this.xCord += SPEED;
     }
 
@@ -83,6 +90,9 @@ public class Character {
      * moves the character's x coordinate to the left
      */
     public void moveLeft() {
+        if (this.xCord - 5 < 0){
+            this.xCord = 800;
+        }
         this.xCord -= SPEED;
     }
 
