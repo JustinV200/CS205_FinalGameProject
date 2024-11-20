@@ -45,12 +45,12 @@ public class GameApp extends GameApplication {
         opponent = new Character(100, "Opponent", 300, 100);
         opponentView = new CharacterView(opponent, EntityType.OPPONENT, Color.RED);
         oppWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.WEAPON);
-        oppWeaponView = new WeaponView(oppWeapon, characterView);
-        movement = new Movement(character, characterView, EntityType.OPPONENT, oppWeaponView);
+        oppWeaponView = new WeaponView(oppWeapon, opponentView);
+        movement = new Movement(opponent, opponentView, EntityType.OPPONENT, oppWeaponView);
     }
     protected void initPhysics(){
         FXGL.getPhysicsWorld().addCollisionHandler(new playerOpponentCollisionHandler(characterView));
-        FXGL.getPhysicsWorld().addCollisionHandler(new lightsaberCharacterCollisionHandler(theWeaponView,characterView, opponentView ));
+        //FXGL.getPhysicsWorld().addCollisionHandler(new lightsaberCharacterCollisionHandler(theWeaponView,characterView, opponentView ));
 
     }
 
