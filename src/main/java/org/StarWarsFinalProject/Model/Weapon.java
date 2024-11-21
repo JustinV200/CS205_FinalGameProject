@@ -27,7 +27,7 @@ public abstract class Weapon {
     public Weapon(double damage, String weaponType, EntityType type){
         this.damage = damage;
         this.weaponType = weaponType;
-        this.entityType=type;
+        this.entityType =type;
     }
     public double getDamage() {
         return damage;

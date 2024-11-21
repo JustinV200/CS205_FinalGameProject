@@ -21,11 +21,14 @@ package org.StarWarsFinalProject.Controller;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import javafx.scene.input.KeyCode;
+import javafx.util.Duration;
 import org.StarWarsFinalProject.EntityType;
 import org.StarWarsFinalProject.Model.Character;
+import org.StarWarsFinalProject.Model.Weapon;
 import org.StarWarsFinalProject.View.CharacterView;
+import org.StarWarsFinalProject.View.weaponView;
 
-import static com.almasb.fxgl.dsl.FXGLForKtKt.onKey;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 
 /**
  * This is class for moving the characters
@@ -36,9 +39,12 @@ public class Movement {
 
     private CharacterView characterView;
 
-    public Movement(Character character, CharacterView characterView, EntityType type) {
+    private weaponView weaponView;
+
+    public Movement(Character character, CharacterView characterView, EntityType type, weaponView weaponView) {
         this.character = character;
         this.characterView = characterView;
+        this.weaponView = weaponView;
         if (type == EntityType.PLAYER) {
             PlayerinitInput();
         }
@@ -57,6 +63,7 @@ public class Movement {
             protected void onAction() {
                 character.moveRight();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.D);
 
@@ -66,6 +73,7 @@ public class Movement {
             protected void onAction() {
                 character.moveLeft();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.A);
 
@@ -75,6 +83,7 @@ public class Movement {
             protected void onAction() {
                 character.moveUp();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.W);
 
@@ -84,8 +93,20 @@ public class Movement {
             protected void onAction() {
                 character.moveDown();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.S);
+
+        input.addAction(new UserAction("Player Attack") {
+            @Override
+            protected void onAction() {
+                character.setAttacking();
+                getGameTimer().runOnceAfter(() -> {
+                    character.setNotAttacking();
+                } , Duration.seconds(0.025));
+
+            }
+        }, KeyCode.SPACE);
     }
 
     protected void OppinitInput() {
@@ -97,6 +118,7 @@ public class Movement {
             protected void onAction() {
                 character.moveRight();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.RIGHT);
 
@@ -106,6 +128,7 @@ public class Movement {
             protected void onAction() {
                 character.moveLeft();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.LEFT);
 
@@ -115,6 +138,7 @@ public class Movement {
             protected void onAction() {
                 character.moveUp();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.UP);
 
@@ -124,8 +148,23 @@ public class Movement {
             protected void onAction() {
                 character.moveDown();
                 characterView.updateView();
+                weaponView.updateView();
             }
         }, KeyCode.DOWN);
+
+        input.addAction(new UserAction("Opponent Attacks") {
+            @Override
+            protected void onAction() {
+                character.setAttacking();
+                getGameTimer().runOnceAfter(() -> {
+                    character.setNotAttacking();
+                } , Duration.seconds(0.025));
+
+            }
+        }, KeyCode.ENTER);
+
+
+
     }
 }
 

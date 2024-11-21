@@ -3,5 +3,6 @@ package org.StarWarsFinalProject;
 public enum EntityType {
     PLAYER,
     OPPONENT,
-    WEAPON
+    PLAYERWEAPON,
+    OPPONENTWEAPON
 }

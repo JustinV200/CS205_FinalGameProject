@@ -41,7 +41,7 @@ public class Character {
     private String name;
 
     /** character's weapon */
-    //private Weapon weapon;
+    private Weapon weapon;
 
     /** x coordinate of the character */
     private double xCord;
@@ -57,6 +57,8 @@ public class Character {
 
     /** pixels that a character moves up and down by in each tick */
     private final int JUMP = 10;
+
+    private boolean attacking;
 
     /**
      * Constructor for character class
@@ -74,6 +76,7 @@ public class Character {
         this.xCord = xCord;
         this.yCord = yCord;
         this.roundsWon = 0;
+        this.attacking = false;
     }
 
     /**
@@ -201,5 +204,24 @@ public class Character {
     public void setY(double y) {
         this.yCord = y;
     }
+
+    public void setAttacking() {
+        attacking = true;
+    }
+
+    public void setNotAttacking() {
+        attacking = false;
+    }
+
+    public boolean getAttacking() {
+        return attacking;
+    }
+
+    public double getMaxHealth() {
+        return maxHealth;
+    }
+
+
+
 
 }
