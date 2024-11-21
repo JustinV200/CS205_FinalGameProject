@@ -56,10 +56,11 @@ public class Character {
     private final int SPEED = 5;
 
     /** pixels that a character moves up and down by in each tick */
-    private final int JUMP = 10;
+    private final int JUMP = 5;
 
     private boolean attacking;
 
+    private int flipper;
     /**
      * Constructor for character class
      *
@@ -68,7 +69,7 @@ public class Character {
      * @param xCord the x coordinate of the character
      * @param yCord the y coordinate of the character
      */
-    public Character(double health, String name,  int xCord, int yCord) {
+    public Character(double health, String name,  int xCord, int yCord, int flipper) {
         this.health = health;
         this.maxHealth = health;
         this.name = name;
@@ -77,7 +78,11 @@ public class Character {
         this.yCord = yCord;
         this.roundsWon = 0;
         this.attacking = false;
+        this.flipper = flipper;
     }
+
+    public int getFlipper(){return this.flipper;}
+    public void flipFlipper(){this.flipper= this.flipper*-1;}
 
     /**
      * moves the character's x coordinate to the right
@@ -88,6 +93,7 @@ public class Character {
         }
         this.xCord += SPEED;
     }
+
 
     /**
      * moves the character's x coordinate to the left

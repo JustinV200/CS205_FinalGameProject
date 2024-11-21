@@ -22,26 +22,27 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import org.StarWarsFinalProject.Model.Lightsaber;
 import org.StarWarsFinalProject.Model.Weapon;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
-public class WeaponView {
+public class weaponView {
     private Entity entity;
     public Weapon theWeapon;
     private CharacterView wielder;
 
-    public WeaponView(Weapon theWeapon, CharacterView wielder) {
+    public weaponView(Weapon theWeapon, CharacterView wielder) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
+        int length = 10;
+        if (theWeapon.getWeaponType() == "Lightsaber"){length = 20;}
+            this.entity = entityBuilder()
+                    .at(wielder.getEntity().getX() + 30, wielder.getEntity().getY())
+                    .type(theWeapon.getType())
+                    .viewWithBBox(new Rectangle(10, length, Color.BLUE))
+                    .with(new CollidableComponent(true))
+                    .buildAndAttach();
 
-        this.entity = entityBuilder()
-                .at(wielder.getEntity().getX()+30, wielder.getEntity().getY())
-                .type(theWeapon.getType())
-                .viewWithBBox(new Rectangle(10, 10, Color.BLUE))
-                .with(new CollidableComponent(true))
-                .buildAndAttach();
 
     }
     public Entity getEntity() {

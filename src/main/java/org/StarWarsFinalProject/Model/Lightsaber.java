@@ -24,7 +24,7 @@ public class Lightsaber extends Weapon {
 
     private double heavyHitRadius;
     private double lightHitRadius;
-
+    private double length;
     public Lightsaber(double damage,String weaponType,double heavyHitRadius,double lightHitRadius, EntityType type) {
         super(damage, weaponType, type);
         this.heavyHitRadius = heavyHitRadius;
@@ -63,5 +63,6 @@ public class Lightsaber extends Weapon {
     public void setLightHitRadius(double LightHitRadius) {
         this.lightHitRadius = LightHitRadius;
     }
+
 
 }

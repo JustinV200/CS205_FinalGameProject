@@ -37,4 +37,6 @@ public abstract class Weapon {
         return this.entityType;
     }
 
+    public String getWeaponType(){return this.weaponType;}
+
 }
