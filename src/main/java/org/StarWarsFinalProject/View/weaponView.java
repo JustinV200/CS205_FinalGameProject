@@ -37,7 +37,7 @@ public class weaponView {
         int length = 10;
         if (theWeapon.getWeaponType() == "Lightsaber"){length = 20;}
             this.entity = entityBuilder()
-                    .at(wielder.getEntity().getX() + 30, wielder.getEntity().getY())
+                    .at(wielder.getEntity().getX() + (30*this.wielder.character.getFlipper()), wielder.getEntity().getY())
                     .type(theWeapon.getType())
                     .viewWithBBox(new Rectangle(10, length, Color.BLUE))
                     .with(new CollidableComponent(true))
@@ -50,6 +50,6 @@ public class weaponView {
     }
 
     public void updateView() {
-        this.entity.setPosition(wielder.getEntity().getX()+30, wielder.getEntity().getY());
+        this.entity.setPosition(wielder.getEntity().getX()+(30*this.wielder.character.getFlipper()), wielder.getEntity().getY());
     }
 }

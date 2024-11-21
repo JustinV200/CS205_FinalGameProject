@@ -82,7 +82,7 @@ public class Character {
     }
 
     public int getFlipper(){return this.flipper;}
-    public void flipFlipper(){this.flipper= this.flipper*-1;}
+    public void flipFlipper(int value){this.flipper= value;}
 
     /**
      * moves the character's x coordinate to the right
