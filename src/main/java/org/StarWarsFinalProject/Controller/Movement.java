@@ -22,8 +22,10 @@ import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import javafx.scene.input.KeyCode;
 import org.StarWarsFinalProject.EntityType;
+import org.StarWarsFinalProject.Model.Blaster;
 import org.StarWarsFinalProject.Model.Character;
 import org.StarWarsFinalProject.View.CharacterView;
+import org.StarWarsFinalProject.View.weaponView;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.onKey;
 
@@ -33,20 +35,22 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.onKey;
 public class Movement {
 
     private Character character;
-
     private CharacterView characterView;
+    private weaponView theWeaponView;
+    private Blaster blaster;
 
-    public Movement(Character character, CharacterView characterView, EntityType type) {
+    public Movement(Character character, CharacterView characterView, EntityType type, weaponView theWeaponView, Blaster blaster) {
         this.character = character;
         this.characterView = characterView;
+        this.theWeaponView = theWeaponView;
+        this.blaster = blaster;
+
         if (type == EntityType.PLAYER) {
             PlayerinitInput();
-        }
-        else {
+        } else {
             OppinitInput();
         }
     }
-
 
     protected void PlayerinitInput() {
         Input input = com.almasb.fxgl.dsl.FXGL.getInput();
@@ -57,6 +61,7 @@ public class Movement {
             protected void onAction() {
                 character.moveRight();
                 characterView.updateView();
+                theWeaponView.updateView();
             }
         }, KeyCode.D);
 
@@ -66,6 +71,7 @@ public class Movement {
             protected void onAction() {
                 character.moveLeft();
                 characterView.updateView();
+                theWeaponView.updateView();
             }
         }, KeyCode.A);
 
@@ -75,6 +81,7 @@ public class Movement {
             protected void onAction() {
                 character.moveUp();
                 characterView.updateView();
+                theWeaponView.updateView();
             }
         }, KeyCode.W);
 
@@ -84,8 +91,18 @@ public class Movement {
             protected void onAction() {
                 character.moveDown();
                 characterView.updateView();
+                theWeaponView.updateView();
             }
         }, KeyCode.S);
+
+        // Shoot blaster
+        input.addAction(new UserAction("Shoot Blaster") {
+            @Override
+            protected void onActionBegin() {
+                // Use the blaster at the character's current position
+                blaster.useWeapon(character.getX() + 12.5, character.getY() + 12.5); // Centered
+            }
+        }, KeyCode.SPACE);
     }
 
     protected void OppinitInput() {
@@ -128,4 +145,3 @@ public class Movement {
         }, KeyCode.DOWN);
     }
 }
-

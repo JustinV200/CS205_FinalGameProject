@@ -53,10 +53,10 @@ public class Character {
     public int roundsWon;
 
     /** pixels that a character moves left and right by in each tick */
-    private final int SPEED = 5;
+    private final int SPEED = 3;
 
     /** pixels that a character moves up and down by in each tick */
-    private final int JUMP = 10;
+    private final int JUMP = 3;
 
     /**
      * Constructor for character class
