@@ -27,12 +27,12 @@ import org.StarWarsFinalProject.Model.Weapon;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
-public class weaponView {
+public class WeaponView {
     private Entity entity;
     public Weapon theWeapon;
     private CharacterView wielder;
 
-    public weaponView(Weapon theWeapon, CharacterView wielder) {
+    public WeaponView(Weapon theWeapon, CharacterView wielder) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
 
