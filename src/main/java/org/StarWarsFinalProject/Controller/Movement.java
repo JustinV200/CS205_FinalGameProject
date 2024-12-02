@@ -35,12 +35,24 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
  */
 public class Movement {
 
+    /** The character which the movements class controls*/
     private Character character;
 
+    /** The view of the character which is being moved in the game*/
     private CharacterView characterView;
 
+    /** The weapon of the character who is being moved*/
     private weaponView weaponView;
 
+    /**
+     * The constructor class for the movement of each entity in the game, which
+     * controls the x and y coordinates and updates the view into the application
+     *
+     * @param character the character
+     * @param characterView the character in the game
+     * @param type the enumeration type of character
+     * @param weaponView the weapon of the character
+     */
     public Movement(Character character, CharacterView characterView, EntityType type, weaponView weaponView) {
         this.character = character;
         this.characterView = characterView;
@@ -54,6 +66,10 @@ public class Movement {
     }
 
 
+    /**
+     * the method which initializes the key inputs for the movement and updates the
+     * character and weapon view
+     */
     protected void PlayerinitInput() {
         Input input = com.almasb.fxgl.dsl.FXGL.getInput();
 
@@ -109,6 +125,10 @@ public class Movement {
         }, KeyCode.SPACE);
     }
 
+    /**
+     * the method which initializes the key inputs for the movement and updates the
+     * opponents and weapon view
+     */
     protected void OppinitInput() {
         Input input = com.almasb.fxgl.dsl.FXGL.getInput();
 

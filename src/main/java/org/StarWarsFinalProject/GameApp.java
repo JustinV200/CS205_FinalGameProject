@@ -14,10 +14,14 @@ import org.StarWarsFinalProject.View.CharacterView;
 import org.StarWarsFinalProject.Controller.Movement;
 import org.StarWarsFinalProject.View.HealthBar;
 import org.StarWarsFinalProject.View.weaponView;
+import org.StarWarsFinalProject.Controller.ProjectManager;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
 public class GameApp extends GameApplication {
+
+    // the a project manager
+    private ProjectManager projectManager;
 
     // create the character
     private Movement characterMovement;
@@ -45,6 +49,10 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void initGame() {
+
+        // creates project manager
+        projectManager = new ProjectManager(3, character, opponent);
+
         // create the player
         character = new Character(100, "Player", 100, 100);
         characterView = new CharacterView(character, EntityType.PLAYER, Color.BLUE);
@@ -52,6 +60,7 @@ public class GameApp extends GameApplication {
         characterWeaponView= new weaponView(characterWeapon, characterView);
         characterMovement = new Movement(character, characterView, EntityType.PLAYER, characterWeaponView);
 
+        // create the opponent
         opponent = new Character(100, "Opponent", 300, 100);
         opponentView = new CharacterView(opponent, EntityType.OPPONENT, Color.RED);
         opponentWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.OPPONENTWEAPON);
@@ -71,8 +80,8 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void onUpdate(double tpf) {
-        healthBarPlayer1.updateHealthBar(character);
-        healthBarPlayer2.updateHealthBar(opponent);
+        healthBarPlayer1.updateHealthBar(character, projectManager);
+        healthBarPlayer2.updateHealthBar(opponent, projectManager);
     }
 
     public static void main(String[] args) {

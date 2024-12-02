@@ -16,7 +16,8 @@
  *
  * ****************************************
  */
-package org.StarWarsFinalProject.Model;
+package org.StarWarsFinalProject.Controller;
+import org.StarWarsFinalProject.Model.Character;
 
 /**
  * the Project Manager class, which manages all aspects of the game
@@ -29,21 +30,20 @@ public class ProjectManager {
     /** the current round number*/
     public int currentRound;
     /** the left player */
-    public Character player1;
+    public Character character;
     /** the right player */
-    public Character player2;
+    public Character opponent;
     /** keeps track of the game time*/
     public int timer;
 
     /**
      * constructor for the ProjectManager Class
      */
-    public ProjectManager(int amountOfRounds) {
+    public ProjectManager(int amountOfRounds, Character player1, Character player2) {
         totalRounds = amountOfRounds;
         currentRound = 1;
-        timer = 0;
-        player1 = new Character();
-        player2 = new Character();
+        character = player1;
+        opponent = player2;
     }
 
     /**
@@ -53,26 +53,6 @@ public class ProjectManager {
         currentRound++;
     }
 
-    /**
-     *  a method which determine who is the winner of a round
-     *  and increments their number of wins
-     */
-    private void determineWinner() {
-        if (player1.isAlive() == false) {
-            updateWins(player2);
-        }
-        if (player2.isAlive() == true) {
-            updateWins(player1);
-        }
-    }
-
-    /**
-     * updates the wins in each character class depending
-     * on who has one the round
-     */
-    private void updateWins(Character player) {
-        player.roundsWon += 1;
-    }
 
     /**
      * a method which determines if the game is over
@@ -81,12 +61,13 @@ public class ProjectManager {
      * @return true if the game has finished, and false if not
      */
     public Boolean gameFinished() {
-        if player1.roundsWon - player2.roundsWon >= 2 {
+        if (character.getRoundsWon() - opponent.getRoundsWon() == 2 && currentRound >= totalRounds) {
             return true;
         }
-        if player2.roundsWon - player2.roundsWon >= 2 {
+        if (opponent.getRoundsWon() - character.getRoundsWon() == 2 && currentRound >= totalRounds) {
             return true;
         }
         return false;
     }
+
 }

@@ -175,6 +175,10 @@ public class Character {
         return this.roundsWon;
     }
 
+    public void updateRoundsWon() {
+        this.roundsWon++;
+    }
+
     /**
      * get the x coordinate for the character
      * @return x coordinate
@@ -205,18 +209,29 @@ public class Character {
         this.yCord = y;
     }
 
+    /**
+     * sets the player's state to attacking   */
     public void setAttacking() {
         attacking = true;
     }
 
+    /**
+     * sets the players state to not attacking / neutral
+     */
     public void setNotAttacking() {
         attacking = false;
     }
 
+    /**
+     * @return if the character is currently attacking
+     */
     public boolean getAttacking() {
         return attacking;
     }
 
+    /**
+     * @return the max health of the character
+     */
     public double getMaxHealth() {
         return maxHealth;
     }

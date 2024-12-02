@@ -22,17 +22,28 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import org.StarWarsFinalProject.Model.Lightsaber;
 import org.StarWarsFinalProject.Model.Weapon;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
-public class WeaponView {
+public class weaponView {
+    /** the entity type of the weapon*/
     private Entity entity;
+
+    /** the weapon which is being updated in the game*/
     public Weapon theWeapon;
+
+    /** the wielder of the weapon*/
     private CharacterView wielder;
 
-    public WeaponView(Weapon theWeapon, CharacterView wielder) {
+    /**
+     * the constructor for the weaponView class which updates the
+     * weapons position in the game and creates the entity
+     *
+     * @param theWeapon the weapon being updated in the game
+     * @param wielder the wielder of the weapon
+     */
+    public weaponView(Weapon theWeapon, CharacterView wielder) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
 
@@ -44,10 +55,17 @@ public class WeaponView {
                 .buildAndAttach();
 
     }
+
+    /**
+     * @return the entity type of the weapon
+     */
     public Entity getEntity() {
         return this.entity;
     }
 
+    /**
+     * updates the weapon's location and coordinates in the game
+     */
     public void updateView() {
         this.entity.setPosition(wielder.getEntity().getX()+30, wielder.getEntity().getY());
     }
