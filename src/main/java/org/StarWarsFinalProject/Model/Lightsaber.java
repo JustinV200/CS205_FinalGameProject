@@ -22,22 +22,9 @@ import org.StarWarsFinalProject.EntityType;
 
 public class Lightsaber extends Weapon {
 
-    /** the hit radius for a heavy attack*/
     private double heavyHitRadius;
-
-    /** the hit radius for a light attack*/
     private double lightHitRadius;
-
-    /**
-     * the constructor for the lightsaber class which deals with the hit radius
-     * of the weapon and determines the damage done by which
-     *
-     * @param damage the damage dealt by the weapon
-     * @param weaponType the type of weapon held by the user
-     * @param heavyHitRadius the hit radius for a heavy attack
-     * @param lightHitRadius the hit radius for a light attack
-     * @param type the type of entity which is holding the lightsaber
-     */
+    private double length;
     public Lightsaber(double damage,String weaponType,double heavyHitRadius,double lightHitRadius, EntityType type) {
         super(damage, weaponType, type);
         this.heavyHitRadius = heavyHitRadius;
@@ -76,5 +63,6 @@ public class Lightsaber extends Weapon {
     public void setLightHitRadius(double LightHitRadius) {
         this.lightHitRadius = LightHitRadius;
     }
+
 
 }

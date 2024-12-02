@@ -14,14 +14,10 @@ import org.StarWarsFinalProject.View.CharacterView;
 import org.StarWarsFinalProject.Controller.Movement;
 import org.StarWarsFinalProject.View.HealthBar;
 import org.StarWarsFinalProject.View.weaponView;
-import org.StarWarsFinalProject.Controller.ProjectManager;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
 public class GameApp extends GameApplication {
-
-    // the a project manager
-    private ProjectManager projectManager;
 
     // create the character
     private Movement characterMovement;
@@ -41,6 +37,8 @@ public class GameApp extends GameApplication {
     private HealthBar healthBarPlayer1;
     private HealthBar healthBarPlayer2;
 
+    private int PlayerFlipper = 1;
+    private int OpponentFlipper = -1;
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setWidth(800);
@@ -49,19 +47,14 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void initGame() {
-
-        // creates project manager
-        projectManager = new ProjectManager(3, character, opponent);
-
         // create the player
-        character = new Character(100, "Player", 100, 100);
+        character = new Character(100, "Player", 100, 100, PlayerFlipper);
         characterView = new CharacterView(character, EntityType.PLAYER, Color.BLUE);
         characterWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.PLAYERWEAPON);
         characterWeaponView= new weaponView(characterWeapon, characterView);
         characterMovement = new Movement(character, characterView, EntityType.PLAYER, characterWeaponView);
 
-        // create the opponent
-        opponent = new Character(100, "Opponent", 300, 100);
+        opponent = new Character(100, "Opponent", 300, 100, OpponentFlipper);
         opponentView = new CharacterView(opponent, EntityType.OPPONENT, Color.RED);
         opponentWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.OPPONENTWEAPON);
         opponentWeaponView = new weaponView(opponentWeapon, opponentView);
@@ -80,8 +73,8 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void onUpdate(double tpf) {
-        healthBarPlayer1.updateHealthBar(character, projectManager);
-        healthBarPlayer2.updateHealthBar(opponent, projectManager);
+        healthBarPlayer1.updateHealthBar(character);
+        healthBarPlayer2.updateHealthBar(opponent);
     }
 
     public static void main(String[] args) {

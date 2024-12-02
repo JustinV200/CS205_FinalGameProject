@@ -80,6 +80,8 @@ public class Movement {
                 character.moveRight();
                 characterView.updateView();
                 weaponView.updateView();
+                character.flipFlipper(1);
+
             }
         }, KeyCode.D);
 
@@ -90,6 +92,8 @@ public class Movement {
                 character.moveLeft();
                 characterView.updateView();
                 weaponView.updateView();
+                character.flipFlipper(-1);
+
             }
         }, KeyCode.A);
 
@@ -139,6 +143,7 @@ public class Movement {
                 character.moveRight();
                 characterView.updateView();
                 weaponView.updateView();
+                character.flipFlipper(1);
             }
         }, KeyCode.RIGHT);
 
@@ -149,6 +154,8 @@ public class Movement {
                 character.moveLeft();
                 characterView.updateView();
                 weaponView.updateView();
+                character.flipFlipper(-1);
+
             }
         }, KeyCode.LEFT);
 

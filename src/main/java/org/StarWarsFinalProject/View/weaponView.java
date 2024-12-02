@@ -27,46 +27,29 @@ import org.StarWarsFinalProject.Model.Weapon;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
 public class weaponView {
-    /** the entity type of the weapon*/
     private Entity entity;
-
-    /** the weapon which is being updated in the game*/
     public Weapon theWeapon;
-
-    /** the wielder of the weapon*/
     private CharacterView wielder;
 
-    /**
-     * the constructor for the weaponView class which updates the
-     * weapons position in the game and creates the entity
-     *
-     * @param theWeapon the weapon being updated in the game
-     * @param wielder the wielder of the weapon
-     */
     public weaponView(Weapon theWeapon, CharacterView wielder) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
+        int length = 10;
+        if (theWeapon.getWeaponType() == "Lightsaber"){length = 20;}
+            this.entity = entityBuilder()
+                    .at(wielder.getEntity().getX() + (30*this.wielder.character.getFlipper()), wielder.getEntity().getY())
+                    .type(theWeapon.getType())
+                    .viewWithBBox(new Rectangle(10, length, Color.BLUE))
+                    .with(new CollidableComponent(true))
+                    .buildAndAttach();
 
-        this.entity = entityBuilder()
-                .at(wielder.getEntity().getX()+30, wielder.getEntity().getY())
-                .type(theWeapon.getType())
-                .viewWithBBox(new Rectangle(10, 10, Color.BLUE))
-                .with(new CollidableComponent(true))
-                .buildAndAttach();
 
     }
-
-    /**
-     * @return the entity type of the weapon
-     */
     public Entity getEntity() {
         return this.entity;
     }
 
-    /**
-     * updates the weapon's location and coordinates in the game
-     */
     public void updateView() {
-        this.entity.setPosition(wielder.getEntity().getX()+30, wielder.getEntity().getY());
+        this.entity.setPosition(wielder.getEntity().getX()+(30*this.wielder.character.getFlipper()), wielder.getEntity().getY());
     }
 }
