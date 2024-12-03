@@ -23,8 +23,8 @@ import com.almasb.fxgl.input.UserAction;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 import org.StarWarsFinalProject.EntityType;
+import org.StarWarsFinalProject.Model.Blaster;
 import org.StarWarsFinalProject.Model.Character;
-import org.StarWarsFinalProject.Model.Weapon;
 import org.StarWarsFinalProject.View.CharacterView;
 import org.StarWarsFinalProject.View.weaponView;
 
@@ -48,12 +48,13 @@ public class Movement {
      * The constructor class for the movement of each entity in the game, which
      * controls the x and y coordinates and updates the view into the application
      *
-     * @param character the character
+     * @param character     the character
      * @param characterView the character in the game
-     * @param type the enumeration type of character
-     * @param weaponView the weapon of the character
+     * @param type          the enumeration type of character
+     * @param weaponView    the weapon of the character
+     * @param blaster
      */
-    public Movement(Character character, CharacterView characterView, EntityType type, weaponView weaponView) {
+    public Movement(Character character, CharacterView characterView, EntityType type, weaponView weaponView, Blaster blaster) {
         this.character = character;
         this.characterView = characterView;
         this.weaponView = weaponView;

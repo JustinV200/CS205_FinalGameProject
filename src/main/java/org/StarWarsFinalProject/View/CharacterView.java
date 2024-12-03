@@ -24,6 +24,7 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import org.StarWarsFinalProject.EntityType;
+import org.StarWarsFinalProject.Model.Blaster;
 import org.StarWarsFinalProject.Model.Character;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;

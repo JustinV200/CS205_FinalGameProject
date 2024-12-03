@@ -39,11 +39,11 @@ public class GameApp extends GameApplication {
     @Override
     protected void initGame() {
         // Initialize player character and view
-        character = new Character(100, "Player", 100, 100);
+        character = new Character(100, "Player", 100, 100, 1);
         characterView = new CharacterView(character, EntityType.PLAYER, Color.BLUE);
 
         // Initialize opponent character and view
-        opponent = new Character(100, "Opponent", 300, 100);
+        opponent = new Character(100, "Opponent", 300, 100, -1);
         opponentView = new CharacterView(opponent, EntityType.OPPONENT, Color.RED);
 
         // Initialize player's weapon
@@ -60,7 +60,7 @@ public class GameApp extends GameApplication {
     @Override
     protected void initPhysics() {
         // Add collision handlers
-        FXGL.getPhysicsWorld().addCollisionHandler(new playerOpponentCollisionHandler(characterView));
+        FXGL.getPhysicsWorld().addCollisionHandler(new playerOpponentCollisionHandler(characterView, opponentView));
         FXGL.getPhysicsWorld().addCollisionHandler(new lightsaberCharacterCollisionHandler(theWeaponView, characterView, opponentView));
         FXGL.getPhysicsWorld().addCollisionHandler(new BulletCollision());
     }
