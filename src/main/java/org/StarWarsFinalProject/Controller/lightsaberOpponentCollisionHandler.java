@@ -43,5 +43,7 @@ public class lightsaberOpponentCollisionHandler extends CollisionHandler {
             this.player.character.takeDamage(this.weapon.theWeapon.getDamage());
             this.opponent.character.setNotAttacking();
         }
+        if(this.player.character.getHealth() <=0){opponent.removeFromWorld();}
+
     }
 }
