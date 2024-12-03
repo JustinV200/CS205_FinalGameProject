@@ -24,17 +24,27 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import org.StarWarsFinalProject.EntityType;
-import org.StarWarsFinalProject.Model.Blaster;
 import org.StarWarsFinalProject.Model.Character;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
 public class CharacterView {
 
+    /** the entity type of the character*/
     private Entity entity;
+
+    /** the character class for the view*/
     public Character character;
     private Blaster blaster;
 
+    /**
+     * the constructor for the character's view as show in the game window, which initializes
+     * and updates the player's coordinates in the game application.
+     *
+     * @param character the character whose being displayed
+     * @param type the type of character
+     * @param color the color of the character to be displayed
+     */
     public CharacterView(Character character, EntityType type, Color color)  {
         this.character = character;
         this.entity = entityBuilder()
@@ -47,6 +57,9 @@ public class CharacterView {
     }
 
 
+    /**
+     * updates the coordinates of the character in the game
+     */
     public void updateView() {
         entity.setPosition(character.getX(), character.getY());
     }
@@ -60,6 +73,9 @@ public class CharacterView {
         return blaster;
     }
 
+    /**
+     * @return the entity of the character
+     */
     public Entity getEntity(){return this.entity;}
 
 

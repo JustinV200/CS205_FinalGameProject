@@ -41,7 +41,7 @@ public class Character {
     private String name;
 
     /** character's weapon */
-    //private Weapon weapon;
+    private Weapon weapon;
 
     /** x coordinate of the character */
     private double xCord;
@@ -53,11 +53,14 @@ public class Character {
     public int roundsWon;
 
     /** pixels that a character moves left and right by in each tick */
-    private final int SPEED = 3;
+    private final int SPEED = 5;
 
     /** pixels that a character moves up and down by in each tick */
-    private final int JUMP = 3;
+    private final int JUMP = 5;
 
+    private boolean attacking;
+
+    private int flipper;
     /**
      * Constructor for character class
      *
@@ -66,7 +69,7 @@ public class Character {
      * @param xCord the x coordinate of the character
      * @param yCord the y coordinate of the character
      */
-    public Character(double health, String name,  int xCord, int yCord) {
+    public Character(double health, String name,  int xCord, int yCord, int flipper) {
         this.health = health;
         this.maxHealth = health;
         this.name = name;
@@ -74,7 +77,12 @@ public class Character {
         this.xCord = xCord;
         this.yCord = yCord;
         this.roundsWon = 0;
+        this.attacking = false;
+        this.flipper = flipper;
     }
+
+    public int getFlipper(){return this.flipper;}
+    public void flipFlipper(int value){this.flipper= value;}
 
     /**
      * moves the character's x coordinate to the right
@@ -85,6 +93,7 @@ public class Character {
         }
         this.xCord += SPEED;
     }
+
 
     /**
      * moves the character's x coordinate to the left
@@ -172,6 +181,10 @@ public class Character {
         return this.roundsWon;
     }
 
+    public void updateRoundsWon() {
+        this.roundsWon++;
+    }
+
     /**
      * get the x coordinate for the character
      * @return x coordinate
@@ -201,5 +214,35 @@ public class Character {
     public void setY(double y) {
         this.yCord = y;
     }
+
+    /**
+     * sets the player's state to attacking   */
+    public void setAttacking() {
+        attacking = true;
+    }
+
+    /**
+     * sets the players state to not attacking / neutral
+     */
+    public void setNotAttacking() {
+        attacking = false;
+    }
+
+    /**
+     * @return if the character is currently attacking
+     */
+    public boolean getAttacking() {
+        return attacking;
+    }
+
+    /**
+     * @return the max health of the character
+     */
+    public double getMaxHealth() {
+        return maxHealth;
+    }
+
+
+
 
 }

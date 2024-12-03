@@ -5,5 +5,7 @@ public enum EntityType {
     OPPONENT,
     WEAPON,
     Blaster,
-    Bullets
+    Bullets,
+    PLAYERWEAPON,
+    OPPONENTWEAPON
 }
