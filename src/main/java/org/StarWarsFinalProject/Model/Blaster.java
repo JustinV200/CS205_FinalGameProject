@@ -39,6 +39,9 @@ public class Blaster extends Weapon {
     }
 
     public void useWeapon(double x, double y) {
+        // Plays the blaster sound
+        FXGL.play("blaster.wav");
+
         // Center the bullet on the character
         Entity bullet = FXGL.entityBuilder()
                 .at(x - 5, y - 5) // Adjust position to be at the center of the character
