@@ -18,6 +18,7 @@
 */
 package org.StarWarsFinalProject.Controller;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import javafx.scene.input.KeyCode;
@@ -41,10 +42,14 @@ public class Movement {
 
     private weaponView weaponView;
 
+    public double initialY;
+
     public Movement(Character character, CharacterView characterView, EntityType type, weaponView weaponView) {
         this.character = character;
         this.characterView = characterView;
         this.weaponView = weaponView;
+        this.initialY = character.getY();
+
         if (type == EntityType.PLAYER) {
             PlayerinitInput();
         }
@@ -85,7 +90,28 @@ public class Movement {
         input.addAction(new UserAction("Move Player Up") {
             @Override
             protected void onAction() {
-                character.moveUp();
+                //character.moveUp();
+                double jumpHeight = 75;
+                double jumpDuration = 1;
+                final int[] steps = {0};
+
+                double interval = 0.016;
+                int totalSteps = (int) (jumpDuration/interval);
+                double charY = initialY;
+                if (character.getY() == initialY) {
+                FXGL.getGameTimer().runAtInterval(() -> {
+                    if(steps[0] <= totalSteps) {
+                        double progress = (double) steps[0]/totalSteps;
+                        double offsetY = -Math.sin(progress * Math.PI) * jumpHeight;
+                        character.setY(charY + offsetY);
+                        characterView.updateView();
+                        weaponView.updateView();
+                        steps[0]++;
+
+                    }
+                },
+                        Duration.seconds(interval));}
+                character.setY(initialY);
                 characterView.updateView();
                 weaponView.updateView();
             }
@@ -95,7 +121,7 @@ public class Movement {
         input.addAction(new UserAction("Move Player Down") {
             @Override
             protected void onAction() {
-                character.moveDown();
+                //character.moveDown();
                 characterView.updateView();
                 weaponView.updateView();
             }
@@ -143,17 +169,39 @@ public class Movement {
         input.addAction(new UserAction("Move Opp Up") {
             @Override
             protected void onAction() {
-                character.moveUp();
+                //character.moveUp();
+                double jumpHeight = 75;
+                double jumpDuration = 1;
+                final int[] steps = {0};
+
+                double interval = 0.016;
+                int totalSteps = (int) (jumpDuration/interval);
+                double charY = initialY;
+                if (character.getY() == initialY) {
+                    FXGL.getGameTimer().runAtInterval(() -> {
+                                if(steps[0] <= totalSteps) {
+                                    double progress = (double) steps[0]/totalSteps;
+                                    double offsetY = -Math.sin(progress * Math.PI) * jumpHeight;
+                                    character.setY(charY + offsetY);
+                                    characterView.updateView();
+                                    weaponView.updateView();
+                                    steps[0]++;
+
+                                }
+                            },
+                            Duration.seconds(interval));}
+                character.setY(initialY);
                 characterView.updateView();
                 weaponView.updateView();
             }
         }, KeyCode.UP);
 
         // Down movement
+        //commented out as it shouldnt be used
         input.addAction(new UserAction("Move Opp Down") {
             @Override
             protected void onAction() {
-                character.moveDown();
+                //character.moveDown();
                 characterView.updateView();
                 weaponView.updateView();
             }
