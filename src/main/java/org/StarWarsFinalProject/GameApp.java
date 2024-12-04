@@ -48,13 +48,13 @@ public class GameApp extends GameApplication {
     @Override
     protected void initGame() {
         // create the player
-        character = new Character(100, "Player", 100, 100, PlayerFlipper);
+        character = new Character(100, "Player", 100, 399, PlayerFlipper);
         characterView = new CharacterView(character, EntityType.PLAYER, Color.BLUE);
         characterWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.PLAYERWEAPON);
         characterWeaponView= new weaponView(characterWeapon, characterView);
         characterMovement = new Movement(character, characterView, EntityType.PLAYER, characterWeaponView);
 
-        opponent = new Character(100, "Opponent", 300, 100, OpponentFlipper);
+        opponent = new Character(100, "Opponent", 300, 399, OpponentFlipper);
         opponentView = new CharacterView(opponent, EntityType.OPPONENT, Color.RED);
         opponentWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.OPPONENTWEAPON);
         opponentWeaponView = new weaponView(opponentWeapon, opponentView);

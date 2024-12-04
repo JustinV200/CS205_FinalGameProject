@@ -29,6 +29,7 @@ public class playerOpponentCollisionHandler extends CollisionHandler {
             opp.character.setX(opponent.getX() + 5);
 
         }
+        /* Y should be unnecessary
         if (opponent.getY() - player.getY() < 0) {
             user.character.setY(player.getY() + 5);
             opp.character.setY(opponent.getY() - 5);
@@ -38,5 +39,6 @@ public class playerOpponentCollisionHandler extends CollisionHandler {
             user.character.setY(player.getY() - 5);
             opp.character.setY(opponent.getY() + 5);
         }
+         */
     }
 }
