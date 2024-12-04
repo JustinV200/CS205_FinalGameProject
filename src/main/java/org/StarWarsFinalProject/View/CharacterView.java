@@ -37,7 +37,7 @@ public class CharacterView {
     /** the character class for the view*/
     public Character character;
     private Blaster blaster;
-    private weaponView weapon;
+    private WeaponView weapon;
 
     /**
      * the constructor for the character's view as show in the game window, which initializes
@@ -76,7 +76,7 @@ public class CharacterView {
         return character;
     }
 
-    public weaponView getWeaponView() {
+    public WeaponView getWeaponView() {
         return weapon;
     }
 
