@@ -35,7 +35,7 @@ public class Blaster extends Weapon {
 
     public Blaster(double damage) {
         super(damage, "Blaster", EntityType.WEAPON);
-        this.bullets = new ArrayList<>();
+        //this.bullets = new ArrayList<>();
     }
 
     public void useWeapon(double x, double y) {

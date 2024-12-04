@@ -40,4 +40,5 @@ public class BulletCollision extends CollisionHandler {
         // shits and giggles sound effect
         FXGL.play("explosion.wav"); // Ensure the sound file is added to your assets
     }
+
 }

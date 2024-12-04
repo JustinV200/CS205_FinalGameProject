@@ -20,21 +20,20 @@ package org.StarWarsFinalProject.View;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import org.StarWarsFinalProject.Controller.ProjectManager;
 import org.StarWarsFinalProject.Model.Character;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
-public class HealthBar {
+public class HealthBarView {
 
     /** The rectangle which displays the health bar*/
     private Rectangle healthBar;
 
-    /** the width of the healthBar*/
-    private int width;
 
     /** the height of the healthBar*/
-    private int height;
+    final int HEIGHT = 10;
+
+    private Character player;
 
     /**
      * the constructor class for the players healthBars which display the currently
@@ -44,12 +43,11 @@ public class HealthBar {
      * @param inputWidth the width of the bar
      * @param inputHeight the height of the bar
      */
-    public HealthBar(Character player, int inputWidth, int inputHeight) {
-        width = inputWidth;
-        height = inputHeight;
-        healthBar = new Rectangle(width, height, Color.GREEN);
-        healthBar.setTranslateX(player.getX());
-        healthBar.setTranslateY(player.getY() + 30);
+    public HealthBarView(Character player, int x, int y) {
+        double width = (player.getHealth() / player.getMaxHealth()) * 100;
+        healthBar = new Rectangle(width, HEIGHT, Color.GREEN);
+        healthBar.setX(x);
+        healthBar.setY(y);
         getGameScene().addUINode(healthBar);
 
     }
@@ -60,13 +58,13 @@ public class HealthBar {
      * @param player the player who is being tracked
      * @param projectManager the projectManager of the game
      */
-    public void updateHealthBar(Character player, ProjectManager projectManager) {
-        healthBar.setTranslateX(player.getX() - 35);
-        healthBar.setTranslateY(player.getY() + 30);
-        double maxHealth = player.getMaxHealth();
-        double Width = (player.getHealth() / maxHealth) * 100;
+    public void updateHealthBar(Character player) {
+        // Removed the project manager parameter
+
+        double Width = (player.getHealth() / player.getMaxHealth()) * 100;
         healthBar.setWidth(Width);
 
+        /**
         if (healthBar.getWidth() == 0) {
             player.updateRoundsWon();
             if (projectManager.gameFinished() == true) {
@@ -74,6 +72,7 @@ public class HealthBar {
                 System.out.println("Game is Finished");
             }
         }
+         */
     }
 
 }

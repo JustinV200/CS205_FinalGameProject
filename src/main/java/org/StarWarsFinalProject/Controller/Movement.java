@@ -25,9 +25,10 @@ import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 import org.StarWarsFinalProject.EntityType;
 import org.StarWarsFinalProject.Model.Character;
-import org.StarWarsFinalProject.Model.Weapon;
 import org.StarWarsFinalProject.View.CharacterView;
-import org.StarWarsFinalProject.View.weaponView;
+import org.StarWarsFinalProject.View.HealthBarView;
+import org.StarWarsFinalProject.View.View;
+import org.StarWarsFinalProject.View.WeaponView;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 
@@ -38,16 +39,22 @@ public class Movement {
 
     private Character character;
 
-    private CharacterView characterView;
+    //private CharacterView characterView;
 
-    private weaponView weaponView;
+    //private WeaponView weaponView;
+
+    private View view;
+
+    //private HealthBarView healthBar;
 
     public double initialY;
 
-    public Movement(Character character, CharacterView characterView, EntityType type, weaponView weaponView) {
+    public Movement(Character character, View view, EntityType type) {
+        // removed weapon view
         this.character = character;
-        this.characterView = characterView;
-        this.weaponView = weaponView;
+        this.view = view;
+        //this.characterView = characterView;
+        //this.weaponView = weaponView;
         this.initialY = character.getY();
 
         if (type == EntityType.PLAYER) {
@@ -67,8 +74,8 @@ public class Movement {
             @Override
             protected void onAction() {
                 character.moveRight();
-                characterView.updateView();
-                weaponView.updateView();
+                view.characterView.updateView();
+                view.weaponView.updateView();
                 character.flipFlipper(1);
 
             }
@@ -79,8 +86,8 @@ public class Movement {
             @Override
             protected void onAction() {
                 character.moveLeft();
-                characterView.updateView();
-                weaponView.updateView();
+                view.characterView.updateView();
+                view.weaponView.updateView();
                 character.flipFlipper(-1);
 
             }
@@ -104,16 +111,16 @@ public class Movement {
                         double progress = (double) steps[0]/totalSteps;
                         double offsetY = -Math.sin(progress * Math.PI) * jumpHeight;
                         character.setY(charY + offsetY);
-                        characterView.updateView();
-                        weaponView.updateView();
+                        view.characterView.updateView();
+                        view.weaponView.updateView();
                         steps[0]++;
 
                     }
                 },
                         Duration.seconds(interval));}
                 character.setY(initialY);
-                characterView.updateView();
-                weaponView.updateView();
+                view.characterView.updateView();
+                view.weaponView.updateView();
             }
         }, KeyCode.W);
 
@@ -122,8 +129,8 @@ public class Movement {
             @Override
             protected void onAction() {
                 //character.moveDown();
-                characterView.updateView();
-                weaponView.updateView();
+                view.characterView.updateView();
+                view.weaponView.updateView();
             }
         }, KeyCode.S);
 
@@ -134,6 +141,7 @@ public class Movement {
                 getGameTimer().runOnceAfter(() -> {
                     character.setNotAttacking();
                 } , Duration.seconds(0.025));
+
 
             }
         }, KeyCode.SPACE);
@@ -147,8 +155,8 @@ public class Movement {
             @Override
             protected void onAction() {
                 character.moveRight();
-                characterView.updateView();
-                weaponView.updateView();
+                view.characterView.updateView();
+                view.weaponView.updateView();
                 character.flipFlipper(1);
             }
         }, KeyCode.RIGHT);
@@ -158,8 +166,8 @@ public class Movement {
             @Override
             protected void onAction() {
                 character.moveLeft();
-                characterView.updateView();
-                weaponView.updateView();
+                view.characterView.updateView();
+                view.weaponView.updateView();
                 character.flipFlipper(-1);
 
             }
@@ -183,16 +191,16 @@ public class Movement {
                                     double progress = (double) steps[0]/totalSteps;
                                     double offsetY = -Math.sin(progress * Math.PI) * jumpHeight;
                                     character.setY(charY + offsetY);
-                                    characterView.updateView();
-                                    weaponView.updateView();
+                                    view.characterView.updateView();
+                                    view.weaponView.updateView();
                                     steps[0]++;
 
                                 }
                             },
                             Duration.seconds(interval));}
                 character.setY(initialY);
-                characterView.updateView();
-                weaponView.updateView();
+                view.characterView.updateView();
+                view.weaponView.updateView();
             }
         }, KeyCode.UP);
 
@@ -202,8 +210,8 @@ public class Movement {
             @Override
             protected void onAction() {
                 //character.moveDown();
-                characterView.updateView();
-                weaponView.updateView();
+                view.characterView.updateView();
+                view.weaponView.updateView();
             }
         }, KeyCode.DOWN);
 
@@ -211,6 +219,7 @@ public class Movement {
             @Override
             protected void onAction() {
                 character.setAttacking();
+
                 getGameTimer().runOnceAfter(() -> {
                     character.setNotAttacking();
                 } , Duration.seconds(0.025));

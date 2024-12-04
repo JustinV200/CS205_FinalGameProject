@@ -20,15 +20,16 @@ package org.StarWarsFinalProject.Model;
 
 import org.StarWarsFinalProject.EntityType;
 
-public class Lightsabers extends Weapon {
+public class Lightsaber extends Weapon {
 
-    private double heavyHitRadius;
-    private double lightHitRadius;
+    //private double heavyHitRadius;
+    //private double lightHitRadius;
 
-    public Lightsabers(double damage, String weaponType, double heavyHitRadius, double lightHitRadius, EntityType type) {
-        super(damage, weaponType, type);
-        this.heavyHitRadius = heavyHitRadius;
-        this.lightHitRadius = lightHitRadius;
+    public Lightsaber(double damage, EntityType type) {
+        // removed heavyHitRadius and lightHitRadius
+        super(damage, "Lightsaber", type);
+        //this.heavyHitRadius = heavyHitRadius;
+        //this.lightHitRadius = lightHitRadius;
     }
 
     /**
@@ -47,7 +48,7 @@ public class Lightsabers extends Weapon {
             opponent.takeDamage(super.getDamage());
         }
     }
-     */
+
     public double getHeavyHitRadius() {
         return this.heavyHitRadius;
     }
@@ -63,5 +64,6 @@ public class Lightsabers extends Weapon {
     public void setLightHitRadius(double LightHitRadius) {
         this.lightHitRadius = LightHitRadius;
     }
+     */
 
 }

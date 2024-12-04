@@ -1,44 +1,36 @@
+
 package org.StarWarsFinalProject;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import org.StarWarsFinalProject.Controller.lightsaberCharacterCollisionHandler;
-import org.StarWarsFinalProject.Controller.lightsaberOpponentCollisionHandler;
-import org.StarWarsFinalProject.Controller.playerOpponentCollisionHandler;
+import org.StarWarsFinalProject.Controller.LightsaberCharacterCollisionHandler;
+import org.StarWarsFinalProject.Controller.LightsaberOpponentCollisionHandler;
+import org.StarWarsFinalProject.Controller.PlayerOpponentCollisionHandler;
 import org.StarWarsFinalProject.Model.Character;
 import org.StarWarsFinalProject.Model.Lightsaber;
 import org.StarWarsFinalProject.Model.Weapon;
-import org.StarWarsFinalProject.View.CharacterView;
 import org.StarWarsFinalProject.Controller.Movement;
-import org.StarWarsFinalProject.View.HealthBar;
-import org.StarWarsFinalProject.View.weaponView;
+import org.StarWarsFinalProject.View.View;
 
-import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
 public class GameApp extends GameApplication {
 
     // create the character
     private Movement characterMovement;
     private Character character;
-    private CharacterView characterView;
     private Weapon characterWeapon;
-    private weaponView characterWeaponView;
+    private View characterView;
+
 
     // creates the opponent
     private Movement opponentMovement;
     private Character opponent;
-    private CharacterView opponentView;
     private Weapon opponentWeapon;
-    private weaponView opponentWeaponView;
+    private View opponentView;
 
-    // health bars of the player
-    private HealthBar healthBarPlayer1;
-    private HealthBar healthBarPlayer2;
-
-    private int PlayerFlipper = 1;
-    private int OpponentFlipper = -1;
+    final int PLAYERFLIPPER = 1;
+    final int OPPONENTFLIPPER = -1;
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setWidth(800);
@@ -47,35 +39,29 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        // create the player
-        character = new Character(100, "Player", 100, 399, PlayerFlipper);
-        characterView = new CharacterView(character, EntityType.PLAYER, Color.BLUE);
-        characterWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.PLAYERWEAPON);
-        characterWeaponView= new weaponView(characterWeapon, characterView);
-        characterMovement = new Movement(character, characterView, EntityType.PLAYER, characterWeaponView);
+        // Create the character class
+        characterWeapon = new Lightsaber(20, EntityType.PLAYERWEAPON);
+        character = new Character(100, "Player", 100, 399, PLAYERFLIPPER, characterWeapon);
+        characterView = new View(character, EntityType.PLAYER, Color.BLUE, 100, 100);
+        characterMovement = new Movement(character, characterView, EntityType.PLAYER);
 
-        opponent = new Character(100, "Opponent", 300, 399, OpponentFlipper);
-        opponentView = new CharacterView(opponent, EntityType.OPPONENT, Color.RED);
-        opponentWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.OPPONENTWEAPON);
-        opponentWeaponView = new weaponView(opponentWeapon, opponentView);
-        opponentMovement = new Movement(opponent, opponentView, EntityType.OPPONENT, opponentWeaponView);
+        opponentWeapon = new Lightsaber(20, EntityType.OPPONENTWEAPON);
+        opponent = new Character(100, "Opponent", 500, 399, OPPONENTFLIPPER, opponentWeapon);
+        opponentView = new View(opponent, EntityType.OPPONENT, Color.RED, 500, 100);
+        opponentMovement = new Movement(opponent, opponentView, EntityType.OPPONENT);
 
-        // create the health bars for each character
-        healthBarPlayer1 = new HealthBar(character, 10, 10);
-        healthBarPlayer2 = new HealthBar(opponent, 10, 10);
-
-    }
-    protected void initPhysics(){
-        FXGL.getPhysicsWorld().addCollisionHandler(new playerOpponentCollisionHandler(characterView, opponentView));
-        FXGL.getPhysicsWorld().addCollisionHandler(new lightsaberCharacterCollisionHandler(characterWeaponView,characterView, opponentView ));
-        FXGL.getPhysicsWorld().addCollisionHandler(new lightsaberOpponentCollisionHandler(opponentWeaponView, characterView, opponentView ));
     }
 
     @Override
-    protected void onUpdate(double tpf) {
-        healthBarPlayer1.updateHealthBar(character);
-        healthBarPlayer2.updateHealthBar(opponent);
+    protected void initPhysics() {
+        // Register collision handlers for both player and opponent weapons
+        FXGL.getPhysicsWorld().addCollisionHandler(new PlayerOpponentCollisionHandler(character, opponent));
+
+        // Register collision handler for when either character's weapon hits the opponent
+        FXGL.getPhysicsWorld().addCollisionHandler(new LightsaberCharacterCollisionHandler(characterView, opponentView));
+        FXGL.getPhysicsWorld().addCollisionHandler(new LightsaberOpponentCollisionHandler(opponentView, characterView));
     }
+
 
     public static void main(String[] args) {
         launch(args);

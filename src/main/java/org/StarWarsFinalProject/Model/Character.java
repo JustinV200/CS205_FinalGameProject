@@ -61,6 +61,7 @@ public class Character {
     private boolean attacking;
 
     private int flipper;
+
     /**
      * Constructor for character class
      *
@@ -69,16 +70,20 @@ public class Character {
      * @param xCord the x coordinate of the character
      * @param yCord the y coordinate of the character
      */
-    public Character(double health, String name,  int xCord, int yCord, int flipper) {
+    public Character(double health, String name,  int xCord, int yCord, int flipper, Weapon weapon) {
         this.health = health;
         this.maxHealth = health;
         this.name = name;
-        //this.weapon = weapon;
+        this.weapon = weapon;
         this.xCord = xCord;
         this.yCord = yCord;
         this.roundsWon = 0;
         this.attacking = false;
         this.flipper = flipper;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
     }
 
     public int getFlipper(){return this.flipper;}
@@ -105,19 +110,6 @@ public class Character {
         this.xCord -= SPEED;
     }
 
-    /**
-     * moves the character's y coordinate to up
-     */
-    public void moveDown() {
-        this.yCord += JUMP;
-    }
-
-    /**
-     * moves the character's x coordinate down
-     * */
-    public void moveUp() {
-        this.yCord -= JUMP;
-    }
 
     /**
      * Class for the character to take damage

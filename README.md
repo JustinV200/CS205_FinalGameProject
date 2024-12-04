@@ -6,11 +6,21 @@ Instructor: Professor Romano
 
 Semester: Fall 2024
 ## Team Information
-List team members
-List 1-2 relevant sentences about each member, including year and major
+Team Name: Team 07
+
+Members of the team and their roles:
+
+- David Krumov - Scrum Master
+- Martin Lorinkov - Product Role
+- Connor Thurston - Developer
+- Justin Verlin - Developer
+
 ## Project Information
-*Write a few sentences about your project. This can be done later, as you
-may not quite know all the details yet.*
+
+
 ## How to run it
 *IMPORTANT - Update this with information about how to build and run your
 project!
+## Package Structure
+## 3rd Party Libraries
+## URL to Video Presentation

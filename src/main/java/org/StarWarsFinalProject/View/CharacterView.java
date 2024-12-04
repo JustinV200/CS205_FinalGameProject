@@ -54,7 +54,6 @@ public class CharacterView {
                 .viewWithBBox(new Rectangle(25, 25, color))
                 .with(new CollidableComponent(true))
                 .buildAndAttach();
-        this.blaster = new Blaster(10);
     }
 
 
@@ -65,14 +64,6 @@ public class CharacterView {
         entity.setPosition(character.getX(), character.getY());
     }
 
-    public void shoot() {
-        // Use blaster at the center of the character
-        blaster.useWeapon(character.getX() + 12.5, character.getY() + 12.5);
-    }
-
-    public Blaster getBlaster() {
-        return blaster;
-    }
 
     /**
      * @return the entity of the character

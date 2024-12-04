@@ -26,30 +26,39 @@ import org.StarWarsFinalProject.Model.Weapon;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
-public class weaponView {
+public class WeaponView {
     private Entity entity;
     public Weapon theWeapon;
     private CharacterView wielder;
 
-    public weaponView(Weapon theWeapon, CharacterView wielder) {
+    public WeaponView(Weapon theWeapon, CharacterView wielder) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
-        int length = 10;
-        if (theWeapon.getWeaponType() == "Lightsaber"){length = 20;}
+        if (theWeapon.getWeaponType() == "Lightsaber") {
             this.entity = entityBuilder()
-                    .at(wielder.getEntity().getX() + (30*this.wielder.character.getFlipper()), wielder.getEntity().getY())
+                    .at(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), wielder.getEntity().getY())
                     .type(theWeapon.getType())
-                    .viewWithBBox(new Rectangle(10, length, Color.BLUE))
+                    .viewWithBBox(new Rectangle(10, 20, Color.BLUE))
                     .with(new CollidableComponent(true))
                     .buildAndAttach();
+        }
+
+        if(theWeapon.getWeaponType() == "Blaster") {
+            this.entity = entityBuilder()
+                    .at(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), wielder.getEntity().getY())
+                    .type(theWeapon.getType())
+                    .viewWithBBox(new Rectangle(10, 10, Color.BLUE))
+                    .with(new CollidableComponent(true))
+                    .buildAndAttach();
+        }
 
 
-    }
-    public Entity getEntity() {
-        return this.entity;
+
     }
 
     public void updateView() {
         this.entity.setPosition(wielder.getEntity().getX()+(30*this.wielder.character.getFlipper()), wielder.getEntity().getY());
     }
+
+    public Entity getEntity(){return this.entity;}
 }
