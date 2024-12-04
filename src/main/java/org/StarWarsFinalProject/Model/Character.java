@@ -23,6 +23,7 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.entity.components.TypeComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import org.StarWarsFinalProject.View.weaponView;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
@@ -41,7 +42,7 @@ public class Character {
     private String name;
 
     /** character's weapon */
-    private Weapon weapon;
+    private weaponView weapon;
 
     /** x coordinate of the character */
     private double xCord;
@@ -60,6 +61,10 @@ public class Character {
 
     private boolean attacking;
 
+    private final int initialXCord;
+
+    private final int initialYCord;
+
     private int flipper;
     /**
      * Constructor for character class
@@ -69,12 +74,14 @@ public class Character {
      * @param xCord the x coordinate of the character
      * @param yCord the y coordinate of the character
      */
-    public Character(double health, String name,  int xCord, int yCord, int flipper) {
+    public Character(double health, String name, int xCord, int yCord, int flipper) {
         this.health = health;
         this.maxHealth = health;
         this.name = name;
-        //this.weapon = weapon;
+        //this.weapon = Weapon;
         this.xCord = xCord;
+        this.initialXCord = xCord;
+        this.initialYCord = yCord;
         this.yCord = yCord;
         this.roundsWon = 0;
         this.attacking = false;
@@ -245,6 +252,14 @@ public class Character {
     public void resetHealth() {
         this.health = maxHealth;
     }
+
+
+    public void resetCoordinates() {
+        this.xCord = initialXCord;
+        this.yCord = initialYCord;
+    }
+
+
 
 
 
