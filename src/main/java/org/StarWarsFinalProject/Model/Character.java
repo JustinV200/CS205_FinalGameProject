@@ -242,6 +242,10 @@ public class Character {
         return maxHealth;
     }
 
+    public void resetHealth() {
+        this.health = maxHealth;
+    }
+
 
 
 
