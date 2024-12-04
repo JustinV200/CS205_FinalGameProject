@@ -37,6 +37,7 @@ public class CharacterView {
     /** the character class for the view*/
     public Character character;
     private Blaster blaster;
+    private weaponView weapon;
 
     /**
      * the constructor for the character's view as show in the game window, which initializes
@@ -48,6 +49,7 @@ public class CharacterView {
      */
     public CharacterView(Character character, EntityType type, Color color)  {
         this.character = character;
+        this.weapon = weapon;
         this.entity = entityBuilder()
                 .at(character.getX(), character.getY())
                 .type(type)
@@ -70,6 +72,13 @@ public class CharacterView {
      */
     public Entity getEntity(){return this.entity;}
 
+    public Character getCharacter() {
+        return character;
+    }
+
+    public weaponView getWeaponView() {
+        return weapon;
+    }
 
 
 
