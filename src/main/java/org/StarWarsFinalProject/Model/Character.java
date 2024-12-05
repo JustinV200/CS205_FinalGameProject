@@ -59,13 +59,18 @@ public class Character {
     /** pixels that a character moves up and down by in each tick */
     private final int JUMP = 5;
 
+    /** boolean which states if the character is attacking or not (true if attacking, false if not) */
     private boolean attacking;
 
+    /** the initial x coordinate of the character */
     private final int initialXCord;
 
+    /** the initial y coordinate of the character */
     private final int initialYCord;
 
+    /** flips the character's view model based on key inputs (-1 for left, 1  for right) */
     private int flipper;
+
     /**
      * Constructor for character class
      *
@@ -88,7 +93,15 @@ public class Character {
         this.flipper = flipper;
     }
 
+    /**
+     * @return the flipper value for the characterView
+     */
     public int getFlipper(){return this.flipper;}
+
+    /**
+     * method which flips the character ( value * -1)
+     * @param value number being flipped
+     */
     public void flipFlipper(int value){this.flipper= value;}
 
     /**
@@ -249,11 +262,17 @@ public class Character {
         return maxHealth;
     }
 
+    /**
+     * method which resets the health of the user to it's original max health
+     */
     public void resetHealth() {
         this.health = maxHealth;
     }
 
 
+    /**
+     * method which resets the coordinates of the character to it's original coordinates
+     */
     public void resetCoordinates() {
         this.xCord = initialXCord;
         this.yCord = initialYCord;

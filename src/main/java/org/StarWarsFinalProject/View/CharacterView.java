@@ -72,6 +72,9 @@ public class CharacterView {
         blaster.useWeapon(character.getX() + 12.5, character.getY() + 12.5);
     }
 
+    /**
+     * @return the character's blaster object
+     */
     public Blaster getBlaster() {
         return blaster;
     }
@@ -81,13 +84,13 @@ public class CharacterView {
      */
     public Entity getEntity(){return this.entity;}
 
+    /**
+     * @return the character's character object
+     */
     public Character getCharacter() {
         return character;
     }
 
-    public weaponView getWeaponView() {
-        return weapon;
-    }
 
 
 
