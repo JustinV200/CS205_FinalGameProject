@@ -39,8 +39,8 @@ public class GameApp extends GameApplication {
     // the project manager
     private ProjectManager projectManager;
 
-    private int PlayerFlipper = 1;
-    private int OpponentFlipper = -1;
+    final int PLAYER_FLIPPER = 1;
+    final int OPPONENT_FLIPPER = -1;
 
 
     @Override
@@ -53,12 +53,12 @@ public class GameApp extends GameApplication {
     protected void initGame() {
         // create the player
         characterWeapon = new Lightsaber(5, EntityType.PLAYERWEAPON);
-        character = new Character(100, "Player", 100, 399, PlayerFlipper, characterWeapon);
+        character = new Character(100, "Player", 100, 399, PLAYER_FLIPPER, characterWeapon);
         characterView = new View(character, EntityType.PLAYER, Color.BLUE, 10, 50);
         characterMovement = new Movement(character, EntityType.PLAYER, characterView);
 
         opponentWeapon = new Lightsaber(5,  EntityType.OPPONENTWEAPON);
-        opponent = new Character(100, "Opponent", 700, 399, OpponentFlipper, opponentWeapon);
+        opponent = new Character(100, "Opponent", 700, 399, OPPONENT_FLIPPER, opponentWeapon);
         opponentView = new View(opponent, EntityType.OPPONENT, Color.RED, 690, 50);
         opponentMovement = new Movement(opponent, EntityType.OPPONENT, opponentView);
 

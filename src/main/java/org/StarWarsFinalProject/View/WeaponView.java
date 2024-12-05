@@ -58,7 +58,13 @@ public class WeaponView {
     }
 
     public void updateView() {
-        this.entity.setPosition(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 10);
+        if (this.wielder.character.getFlipper() == 1){
+            this.entity.setPosition(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 10);
+        }
+        else{
+            this.entity.setPosition(wielder.getEntity().getX() + (15 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 10);
+        }
+
         if (wielder.getCharacter().getAttacking()) {
             this.entity.setPosition(wielder.getEntity().getX() + (50 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 30);
         }

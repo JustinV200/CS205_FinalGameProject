@@ -40,7 +40,7 @@ public class LightsaberOpponentCollisionHandler extends CollisionHandler {
         // Check if the opponent is attacking
         if (this.player.characterView.character.getAttacking()) {
             // Player takes damage from the opponent's weapon
-            this.player.characterView.character.setNotAttacking();
+            //this.player.characterView.character.setNotAttacking();
             this.opp.characterView.character.takeDamage(this.player.weaponView.theWeapon.getDamage());
             this.opp.healthBarView.updateHealthBar(); // Update player health bar
 

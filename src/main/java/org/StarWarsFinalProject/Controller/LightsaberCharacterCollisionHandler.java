@@ -45,7 +45,7 @@ public class LightsaberCharacterCollisionHandler extends CollisionHandler {
         // If you want to handle the case where the player attacks the opponent, you could add a similar block here:
         if (this.opp.characterView.character.getAttacking()) {
 
-            this.opp.characterView.character.setNotAttacking();
+            //this.opp.characterView.character.setNotAttacking();
             this.player.characterView.character.takeDamage(this.opp.weaponView.theWeapon.getDamage());
             this.player.healthBarView.updateHealthBar(); // Update opponent health bar
 
