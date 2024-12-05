@@ -58,6 +58,9 @@ public abstract class Weapon {
         return this.entityType;
     }
 
+    /**
+     * @return the weapon type as a string
+     */
     public String getWeaponType(){return this.weaponType;}
 
 }

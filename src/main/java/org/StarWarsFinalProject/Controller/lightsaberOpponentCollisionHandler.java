@@ -40,10 +40,9 @@ public class lightsaberOpponentCollisionHandler extends CollisionHandler {
     @Override
     protected void onCollision(Entity playerWeapon, Entity opponent) {
         if (this.opponent.character.getAttacking() == true) {
-            this.player.character.takeDamage(this.weapon.theWeapon.getDamage());
             this.opponent.character.setNotAttacking();
+            this.player.character.takeDamage(this.weapon.theWeapon.getDamage());
         }
-        if(this.player.character.getHealth() <=0){opponent.removeFromWorld();}
 
     }
 }

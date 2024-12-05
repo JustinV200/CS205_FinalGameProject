@@ -17,7 +17,11 @@
  * ****************************************
  */
 package org.StarWarsFinalProject.Controller;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import org.StarWarsFinalProject.Model.Character;
+import org.StarWarsFinalProject.View.CharacterView;
 
 /**
  * the Project Manager class, which manages all aspects of the game
@@ -35,16 +39,65 @@ public class ProjectManager {
     public Character opponent;
     /** keeps track of the game time*/
     public int timer;
+    /** the view of the character */
+    public CharacterView characterView;
+    /** the view of the opponenet*/
+    public CharacterView opponentView;
 
     /**
      * constructor for the ProjectManager Class
      */
-    public ProjectManager(int amountOfRounds, Character player1, Character player2) {
+    public ProjectManager(int amountOfRounds, Character player1, Character player2, CharacterView player1View, CharacterView player2View) {
         totalRounds = amountOfRounds;
         currentRound = 1;
         character = player1;
         opponent = player2;
+        characterView = player1View;
+        opponentView = player2View;
     }
+
+    /**
+     * method which checks if the round is over and calls the
+     * reset round method if either character's health is zero
+     */
+    public void checkIfRoundOver() {
+        if (character.getHealth() <= 0 || opponent.getHealth() <= 0) {
+            resetRound();
+        }
+    }
+
+    /**
+     * method which resets the round if the game is not finished
+     * if the game is finished then the console prints "Game Over"
+     */
+    public void resetRound() {
+        resetCharacter();
+        if (gameFinished()) {
+            System.out.println("Game Over");
+        }
+        else {
+            updateRound();
+        }
+    }
+
+    /**
+     * method which resets the character's to their original position
+     * and health and updates their view in the game
+     */
+    public void resetCharacter() {
+        // reset the health of the character
+        character.resetHealth();
+        opponent.resetHealth();
+
+        // update the character's coordinates
+        character.resetCoordinates();
+        opponent.resetCoordinates();
+
+        // update their views in the game
+        characterView.updateView();
+        opponentView.updateView();
+    }
+
 
     /**
      * a method which updates the current round the game is on
@@ -70,4 +123,10 @@ public class ProjectManager {
         return false;
     }
 
+    /**
+     * @return the current round of the game
+     */
+    public int getRound() {
+        return currentRound;
+    }
 }

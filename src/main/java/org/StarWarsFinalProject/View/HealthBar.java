@@ -36,6 +36,8 @@ public class HealthBar {
     /** the height of the healthBar*/
     private int height;
 
+    private Character character;
+
     /**
      * the constructor class for the players healthBars which display the currently
      * health of the characters
@@ -44,12 +46,13 @@ public class HealthBar {
      * @param inputWidth the width of the bar
      * @param inputHeight the height of the bar
      */
-    public HealthBar(Character player, int inputWidth, int inputHeight) {
+    public HealthBar(Character player, int inputWidth, int inputHeight, int xCord, int yCord) {
+        character = player;
         width = inputWidth;
         height = inputHeight;
         healthBar = new Rectangle(width, height, Color.GREEN);
-        healthBar.setTranslateX(player.getX());
-        healthBar.setTranslateY(player.getY() + 30);
+        healthBar.setTranslateX(xCord);
+        healthBar.setTranslateY(yCord);
         getGameScene().addUINode(healthBar);
 
     }
@@ -57,23 +60,10 @@ public class HealthBar {
     /**
      * a method which updates the healthBar's position and width according to the
      * damage done to the character and the character's position
-     * @param player the player who is being tracked
-     * @param projectManager the projectManager of the game
      */
-    public void updateHealthBar(Character player, ProjectManager projectManager) {
-        healthBar.setTranslateX(player.getX() - 35);
-        healthBar.setTranslateY(player.getY() + 30);
-        double maxHealth = player.getMaxHealth();
-        double Width = (player.getHealth() / maxHealth) * 100;
+    public void updateHealthBar() {
+        double maxHealth = character.getMaxHealth();
+        double Width = (character.getHealth() / maxHealth) * 100;
         healthBar.setWidth(Width);
-
-        if (healthBar.getWidth() == 0) {
-            player.updateRoundsWon();
-            if (projectManager.gameFinished() == true) {
-                // game is over reset, remove when fixed
-                System.out.println("Game is Finished");
-            }
-        }
     }
-
 }

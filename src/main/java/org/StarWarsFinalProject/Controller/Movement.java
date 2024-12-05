@@ -21,6 +21,7 @@ package org.StarWarsFinalProject.Controller;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import javafx.animation.RotateTransition;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 import org.StarWarsFinalProject.EntityType;
@@ -131,9 +132,11 @@ public class Movement {
             @Override
             protected void onAction() {
                 character.setAttacking();
+                weaponView.rotateLightSaber();
                 getGameTimer().runOnceAfter(() -> {
                     character.setNotAttacking();
-                } , Duration.seconds(0.025));
+                    weaponView.rotateLightSaberBack();
+                } , Duration.seconds(0.10));
 
             }
         }, KeyCode.SPACE);
@@ -211,15 +214,14 @@ public class Movement {
             @Override
             protected void onAction() {
                 character.setAttacking();
+                weaponView.rotateLightSaber();
                 getGameTimer().runOnceAfter(() -> {
+                    weaponView.rotateLightSaberBack();
                     character.setNotAttacking();
-                } , Duration.seconds(0.025));
+                } , Duration.seconds(0.10));
 
             }
         }, KeyCode.ENTER);
-
-
-
     }
 }
 

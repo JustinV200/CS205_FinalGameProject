@@ -20,8 +20,12 @@ package org.StarWarsFinalProject.View;
 
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
+import javafx.geometry.Point2D;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import org.StarWarsFinalProject.Model.Weapon;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
@@ -30,26 +34,49 @@ public class weaponView {
     private Entity entity;
     public Weapon theWeapon;
     private CharacterView wielder;
+    private int length;
+    private int width;
+    private Rectangle rectangle;
 
     public weaponView(Weapon theWeapon, CharacterView wielder) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
-        int length = 10;
-        if (theWeapon.getWeaponType() == "Lightsaber"){length = 20;}
-            this.entity = entityBuilder()
-                    .at(wielder.getEntity().getX() + (30*this.wielder.character.getFlipper()), wielder.getEntity().getY())
-                    .type(theWeapon.getType())
-                    .viewWithBBox(new Rectangle(10, length, Color.BLUE))
-                    .with(new CollidableComponent(true))
-                    .buildAndAttach();
-
+        this.length = 50;
+        this.width = 10;
+        this.rectangle = new Rectangle(width, length, Color.BLUE);
+        if (theWeapon.getWeaponType() == "Lightsaber") {
+            length = 50;
+            width = 10;
+        }
+        this.entity = entityBuilder()
+                .at(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), (wielder.getEntity().getY() - length + 10))
+                .type(theWeapon.getType())
+                .viewWithBBox(rectangle)
+                .with(new CollidableComponent(true))
+                .buildAndAttach();
 
     }
+
     public Entity getEntity() {
         return this.entity;
     }
 
     public void updateView() {
-        this.entity.setPosition(wielder.getEntity().getX()+(30*this.wielder.character.getFlipper()), wielder.getEntity().getY());
+        this.entity.setPosition(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 10);
+        if (wielder.getCharacter().getAttacking()) {
+            this.entity.setPosition(wielder.getEntity().getX() + (50 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 30);
+        }
+    }
+
+    public Rectangle getRectangle() {
+        return this.rectangle;
+    }
+
+    public void rotateLightSaber() {
+        rectangle.setRotate(90);
+    }
+
+    public void rotateLightSaberBack() {
+        rectangle.setRotate(0);
     }
 }
