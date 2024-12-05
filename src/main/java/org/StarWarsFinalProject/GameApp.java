@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.StarWarsFinalProject.Controller.*;
 import org.StarWarsFinalProject.Model.Character;
-import org.StarWarsFinalProject.Model.Lightsabers;
+import org.StarWarsFinalProject.Model.Lightsaber;
 import org.StarWarsFinalProject.Model.Weapon;
 import org.StarWarsFinalProject.View.CharacterView;
 import org.StarWarsFinalProject.View.HealthBar;
@@ -61,13 +61,13 @@ public class GameApp extends GameApplication {
         // create the player
         character = new Character(100, "Player", 100, 399, PlayerFlipper);
         characterView = new CharacterView(character, EntityType.PLAYER, Color.BLUE);
-        characterWeapon = new Lightsabers(5, "Lightsaber", 3, 2, EntityType.PLAYERWEAPON);
+        characterWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.PLAYERWEAPON);
         characterWeaponView= new weaponView(characterWeapon, characterView);
         characterMovement = new Movement(character, characterView, EntityType.PLAYER, characterWeaponView);
 
         opponent = new Character(100, "Opponent", 700, 399, OpponentFlipper);
         opponentView = new CharacterView(opponent, EntityType.OPPONENT, Color.RED);
-        opponentWeapon = new Lightsabers(5, "Lightsaber", 3, 2, EntityType.OPPONENTWEAPON);
+        opponentWeapon = new Lightsaber(5, "Lightsaber", 3, 2, EntityType.OPPONENTWEAPON);
         opponentWeaponView = new weaponView(opponentWeapon, opponentView);
         opponentMovement = new Movement(opponent, opponentView, EntityType.OPPONENT, opponentWeaponView);
 
