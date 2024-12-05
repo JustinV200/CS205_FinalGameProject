@@ -20,17 +20,13 @@ package org.StarWarsFinalProject.View;
 
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
-import javafx.animation.RotateTransition;
-import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
-import javafx.geometry.Point2D;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 import org.StarWarsFinalProject.Model.Weapon;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
-public class weaponView {
+public class WeaponView {
     private Entity entity;
     public Weapon theWeapon;
     private CharacterView wielder;
@@ -38,7 +34,7 @@ public class weaponView {
     private int width;
     private Rectangle rectangle;
 
-    public weaponView(Weapon theWeapon, CharacterView wielder) {
+    public WeaponView(Weapon theWeapon, CharacterView wielder) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
         this.length = 50;

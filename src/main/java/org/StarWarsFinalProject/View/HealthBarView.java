@@ -25,32 +25,32 @@ import org.StarWarsFinalProject.Model.Character;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
-public class HealthBar {
+public class HealthBarView {
 
     /** The rectangle which displays the health bar*/
     private Rectangle healthBar;
 
     /** the width of the healthBar*/
-    private int width;
+    private double width;
 
     /** the height of the healthBar*/
-    private int height;
+    //private int height;
 
     private Character character;
+
+    final int HEIGHT = 20;
+
 
     /**
      * the constructor class for the players healthBars which display the currently
      * health of the characters
      *
      * @param player the player which the bar tracks
-     * @param inputWidth the width of the bar
-     * @param inputHeight the height of the bar
      */
-    public HealthBar(Character player, int inputWidth, int inputHeight, int xCord, int yCord) {
-        character = player;
-        width = inputWidth;
-        height = inputHeight;
-        healthBar = new Rectangle(width, height, Color.GREEN);
+    public HealthBarView(Character player, int xCord, int yCord) {
+        this.character = player;
+        this.width = player.getMaxHealth();
+        healthBar = new Rectangle(width, HEIGHT, Color.GREEN);
         healthBar.setTranslateX(xCord);
         healthBar.setTranslateY(yCord);
         getGameScene().addUINode(healthBar);
@@ -62,8 +62,8 @@ public class HealthBar {
      * damage done to the character and the character's position
      */
     public void updateHealthBar() {
-        double maxHealth = character.getMaxHealth();
-        double Width = (character.getHealth() / maxHealth) * 100;
-        healthBar.setWidth(Width);
+        double maxHealth = this.character.getMaxHealth();
+        double Width = (this.character.getHealth() / maxHealth) * 100;
+        this.healthBar.setWidth(Width);
     }
 }

@@ -18,12 +18,7 @@
  */
 package org.StarWarsFinalProject.Model;
 
-import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.components.CollidableComponent;
-import com.almasb.fxgl.entity.components.TypeComponent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import org.StarWarsFinalProject.View.weaponView;
+import org.StarWarsFinalProject.View.WeaponView;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.entityBuilder;
 
@@ -42,7 +37,7 @@ public class Character {
     private String name;
 
     /** character's weapon */
-    private weaponView weapon;
+    private Weapon weapon;
 
     /** x coordinate of the character */
     private double xCord;
@@ -79,11 +74,11 @@ public class Character {
      * @param xCord the x coordinate of the character
      * @param yCord the y coordinate of the character
      */
-    public Character(double health, String name, int xCord, int yCord, int flipper) {
+    public Character(double health, String name, int xCord, int yCord, int flipper, Weapon weapon) {
         this.health = health;
         this.maxHealth = health;
         this.name = name;
-        //this.weapon = Weapon;
+        this.weapon = weapon;
         this.xCord = xCord;
         this.initialXCord = xCord;
         this.initialYCord = yCord;
@@ -91,6 +86,7 @@ public class Character {
         this.roundsWon = 0;
         this.attacking = false;
         this.flipper = flipper;
+
     }
 
     /**
@@ -278,6 +274,9 @@ public class Character {
         this.yCord = initialYCord;
     }
 
+    public Weapon getWeapon(){
+        return weapon;
+    }
 
 
 

@@ -22,6 +22,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import org.StarWarsFinalProject.Model.Character;
 import org.StarWarsFinalProject.View.CharacterView;
+import org.StarWarsFinalProject.View.View;
 
 /**
  * the Project Manager class, which manages all aspects of the game
@@ -40,14 +41,14 @@ public class ProjectManager {
     /** keeps track of the game time*/
     public int timer;
     /** the view of the character */
-    public CharacterView characterView;
+    public View characterView;
     /** the view of the opponenet*/
-    public CharacterView opponentView;
+    public View opponentView;
 
     /**
      * constructor for the ProjectManager Class
      */
-    public ProjectManager(int amountOfRounds, Character player1, Character player2, CharacterView player1View, CharacterView player2View) {
+    public ProjectManager(int amountOfRounds, Character player1, Character player2, View player1View, View player2View) {
         totalRounds = amountOfRounds;
         currentRound = 1;
         character = player1;
@@ -94,8 +95,8 @@ public class ProjectManager {
         opponent.resetCoordinates();
 
         // update their views in the game
-        characterView.updateView();
-        opponentView.updateView();
+        characterView.characterView.updateView();
+        opponentView.characterView.updateView();
     }
 
 

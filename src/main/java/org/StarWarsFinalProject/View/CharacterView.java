@@ -19,7 +19,6 @@
 package org.StarWarsFinalProject.View;
 
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -37,7 +36,7 @@ public class CharacterView {
     /** the character class for the view*/
     public Character character;
     private Blaster blaster;
-    private weaponView weapon;
+    private WeaponView weapon;
 
     /**
      * the constructor for the character's view as show in the game window, which initializes

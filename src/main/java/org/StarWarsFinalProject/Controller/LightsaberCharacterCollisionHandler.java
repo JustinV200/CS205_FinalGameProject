@@ -44,16 +44,11 @@ public class LightsaberCharacterCollisionHandler extends CollisionHandler {
 
         // If you want to handle the case where the player attacks the opponent, you could add a similar block here:
         if (this.opp.characterView.character.getAttacking()) {
-            this.player.characterView.character.takeDamage(this.opp.weaponView.theWeapon.getDamage());
-            this.player.healthBarView.updateHealthBar(this.player.characterView.character); // Update opponent health bar
 
-            // Check if the opponent is dead
-            if (this.player.characterView.character.getHealth() <= 0) {
-                // Handle opponent death
-                FXGL.getGameWorld().removeEntity(this.player.characterView.getEntity());
-                FXGL.getGameWorld().removeEntity(this.player.weaponView.getEntity());
-                System.out.println("Opponent is dead!");
-            }
+            this.opp.characterView.character.setNotAttacking();
+            this.player.characterView.character.takeDamage(this.opp.weaponView.theWeapon.getDamage());
+            this.player.healthBarView.updateHealthBar(); // Update opponent health bar
+
         }
     }
 }
