@@ -74,8 +74,8 @@ public class GameApp extends GameApplication {
     }
     protected void initPhysics(){
         FXGL.getPhysicsWorld().addCollisionHandler(new PlayerOpponentCollisionHandler(character, opponent));
-        FXGL.getPhysicsWorld().addCollisionHandler(new LightsaberCharacterCollisionHandler(characterView, opponentView ));
-        FXGL.getPhysicsWorld().addCollisionHandler(new LightsaberOpponentCollisionHandler(opponentView, characterView ));
+        FXGL.getPhysicsWorld().addCollisionHandler(new LightsaberCharacterCollisionHandler(opponentView, characterView));
+        FXGL.getPhysicsWorld().addCollisionHandler(new LightsaberOpponentCollisionHandler(characterView, opponentView ));
     }
 
 
