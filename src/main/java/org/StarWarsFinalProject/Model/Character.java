@@ -274,6 +274,9 @@ public class Character {
         this.yCord = initialYCord;
     }
 
+    /**
+     * @return the character's weapon
+     */
     public Weapon getWeapon(){
         return weapon;
     }

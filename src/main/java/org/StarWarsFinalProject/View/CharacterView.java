@@ -35,7 +35,9 @@ public class CharacterView {
 
     /** the character class for the view*/
     public Character character;
+    /** the blaster object of the  character */
     private Blaster blaster;
+    /** the weaponView of the character's weapon*/
     private WeaponView weapon;
 
     /**

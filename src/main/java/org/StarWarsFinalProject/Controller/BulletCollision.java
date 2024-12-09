@@ -23,8 +23,16 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import org.StarWarsFinalProject.EntityType;
 
+/**
+ * the BulletCollision class which handles the collision between
+ * a player or opponent entity and a bullet entity
+ */
 public class BulletCollision extends CollisionHandler {
 
+    /**
+     * the initializer for the BulletCollisionHandler which
+     * calls the super class with the twp entities
+     * */
     public BulletCollision() {
         super(EntityType.Bullets, EntityType.OPPONENT);
     }

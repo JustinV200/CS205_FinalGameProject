@@ -30,14 +30,27 @@ import org.StarWarsFinalProject.EntityType;
 
 import java.util.ArrayList;
 
+/**
+ * the blaster class
+ */
 public class Blaster extends Weapon {
     private ArrayList<Entity> bullets;
 
+    /**
+     * the initializer of the blaster class which is a child
+     * of the weapon class
+     * @param damage the damage dealt by one bullet
+     */
     public Blaster(double damage) {
         super(damage, "Blaster", EntityType.WEAPON);
         //this.bullets = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param x the x coordinates of the bullet
+     * @param y the y coordinate of the bullet
+     */
     public void useWeapon(double x, double y) {
         // Plays the blaster sound
         FXGL.play("blaster.wav");
@@ -69,6 +82,9 @@ public class Blaster extends Weapon {
         timeline.play();
     }
 
+    /**
+     * updates the bullet's path by 5 pixels
+     */
     public void updateBullets() {
         bullets.removeIf(bullet -> {
             bullet.translateX(5); // Move the bullet to the right
@@ -80,6 +96,10 @@ public class Blaster extends Weapon {
         });
     }
 
+    /**
+     * @return an ArrayList with the bullet entities which have
+     * been fired
+     */
     public ArrayList<Entity> getBullets() {
         return bullets;
     }

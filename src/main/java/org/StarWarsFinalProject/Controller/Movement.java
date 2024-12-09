@@ -36,12 +36,24 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
  */
 public class Movement {
 
+
+    /** the character class for the entity*/
     private Character character;
 
+    /** the view class of the entity*/
     private View view;
 
+    /** the initial Y coordinate of the entity*/
     public double initialY;
 
+    /**
+     * the movement class which initializes the different inputs
+     * for the character of each entity type
+     *
+     * @param character the entity
+     * @param type the entity's type
+     * @param view the entities view
+     */
     public Movement(Character character, EntityType type, View view) {
         this.character = character;
         this.view = view;
@@ -56,6 +68,10 @@ public class Movement {
     }
 
 
+    /**
+     * a method which initializes and handles the logic for each
+     * significant button press for both the player entity
+     */
     protected void PlayerinitInput() {
         Input input = com.almasb.fxgl.dsl.FXGL.getInput();
 
@@ -138,6 +154,10 @@ public class Movement {
         }, KeyCode.SPACE);
     }
 
+    /**
+     * a method which initializes and handles the logic for each
+     * significant button press for both the opponent entity
+     */
     protected void OppinitInput() {
         Input input = com.almasb.fxgl.dsl.FXGL.getInput();
 

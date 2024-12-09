@@ -25,6 +25,11 @@ public class Lightsaber extends Weapon {
     //private double heavyHitRadius;
     //private double lightHitRadius;
 
+    /**
+     * the Lightsaber class which extends the weapon class
+     * @param damage the damage dealt by one blow
+     * @param type the entity type of the object
+     */
     public Lightsaber(double damage, EntityType type) {
         // removed heavyHitRadius and lightHitRadius
         super(damage, "Lightsaber", type);

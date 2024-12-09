@@ -5,11 +5,25 @@ import com.almasb.fxgl.physics.CollisionHandler;
 import org.StarWarsFinalProject.EntityType;
 import org.StarWarsFinalProject.Model.Character;
 
+/**
+ * the playerOpponentCollisionHandler class which handles the collision
+ * between the player entity and the opponent entity
+ */
 public class PlayerOpponentCollisionHandler extends CollisionHandler {
 
+    /**the user's character class*/
     private Character user;
+    /** the opponent's character class*/
     private Character opp;
 
+    /**
+     * the initializer for the PlayerOpponentCollisionHandler
+     * which extends the CollisionHandler class included in
+     * JAVA FXGL
+     *
+     * @param user the user's character class
+     * @param opp the opponent's character class
+     */
     public PlayerOpponentCollisionHandler(Character user, Character opp) {
         super(EntityType.PLAYER, EntityType.OPPONENT);
         this.user = user;

@@ -36,8 +36,10 @@ public class HealthBarView {
     /** the height of the healthBar*/
     //private int height;
 
+    /** the character which the health Bar tracks*/
     private Character character;
 
+    /** the height of the health Bar*/
     final int HEIGHT = 20;
 
 

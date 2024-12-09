@@ -70,7 +70,7 @@ public class GameApp extends GameApplication {
         textView = new TextView(projectManager);
         roundsCounter = textView.getRoundsCounter();
         getGameScene().addUINode(roundsCounter);
-
+d
     }
     protected void initPhysics(){
         FXGL.getPhysicsWorld().addCollisionHandler(new PlayerOpponentCollisionHandler(character, opponent));

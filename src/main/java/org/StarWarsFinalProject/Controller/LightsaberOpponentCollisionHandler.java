@@ -24,11 +24,24 @@ import com.almasb.fxgl.physics.CollisionHandler;
 import org.StarWarsFinalProject.EntityType;
 import org.StarWarsFinalProject.View.View;
 
+/**
+ * the LightSaberOpponentCollisionHandler class which handles collisions
+ * between the player's weapon and the opponent
+ */
 public class LightsaberOpponentCollisionHandler extends CollisionHandler {
 
+    /** the player's view class*/
     private View player;
+    /** the opponents view class */
     private View opp;
 
+    /**
+     * the initializer of for the LightsaberOpponentCollisionHandler class
+     * which extends the CollisionHandler class in JAVA FXGL
+     *
+     * @param characterView the character entity's view class
+     * @param oppView the opponent entities's view class
+     */
     public LightsaberOpponentCollisionHandler(View characterView, View oppView) {
         super(EntityType.PLAYERWEAPON, EntityType.OPPONENT);
         this.player = characterView;
