@@ -62,13 +62,13 @@ public class GameApp extends GameApplication {
                 .buildAndAttach();
         // create the player
         characterWeapon = new Lightsaber(5, EntityType.PLAYERWEAPON);
-        character = new Character(100, "Player", 100, 399, PLAYER_FLIPPER, characterWeapon);
+        character = new Character(100, "Player", 100, 415, PLAYER_FLIPPER, characterWeapon);
         characterView = new View(character, EntityType.PLAYER, "Darthvader.png", 10, 50, "redlightsaber.png");
         characterMovement = new Movement(character, EntityType.PLAYER, characterView);
 
         opponentWeapon = new Lightsaber(5,  EntityType.OPPONENTWEAPON);
         opponent = new Character(100, "Opponent", 700, 399, OPPONENT_FLIPPER, opponentWeapon);
-        opponentView = new View(opponent, EntityType.OPPONENT, "lookiepookie.jpg", 690, 50, "bluelightsaber.jpg");
+        opponentView = new View(opponent, EntityType.OPPONENT, "lookiepookie.png", 690, 50, "bluelightsaber.png");
         opponentMovement = new Movement(opponent, EntityType.OPPONENT, opponentView);
 
 

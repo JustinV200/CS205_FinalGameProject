@@ -88,7 +88,7 @@ public class Movement {
             @Override
             protected void onAction() {
                 //character.moveUp();
-                double jumpHeight = 75;
+                double jumpHeight = 125;
                 double jumpDuration = 1;
                 final int[] steps = {0};
 
@@ -169,7 +169,7 @@ public class Movement {
             @Override
             protected void onAction() {
                 //character.moveUp();
-                double jumpHeight = 75;
+                double jumpHeight = 125;
                 double jumpDuration = 1;
                 final int[] steps = {0};
 
