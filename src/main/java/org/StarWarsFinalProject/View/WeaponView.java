@@ -34,7 +34,7 @@ public class WeaponView {
     private int width;
     private Rectangle rectangle;
 
-    public WeaponView(Weapon theWeapon, CharacterView wielder) {
+    public WeaponView(Weapon theWeapon, CharacterView wielder, String image) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
         this.length = 50;
@@ -45,9 +45,9 @@ public class WeaponView {
             width = 10;
         }
         this.entity = entityBuilder()
-                .at(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), (wielder.getEntity().getY() - length + 10))
+                .at(wielder.getEntity().getX() + (40 * this.wielder.character.getFlipper()), (wielder.getEntity().getY() - length + 50))
                 .type(theWeapon.getType())
-                .viewWithBBox(rectangle)
+                .viewWithBBox(image)
                 .with(new CollidableComponent(true))
                 .buildAndAttach();
 
@@ -59,10 +59,10 @@ public class WeaponView {
 
     public void updateView() {
         if (this.wielder.character.getFlipper() == 1){
-            this.entity.setPosition(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 10);
+            this.entity.setPosition(wielder.getEntity().getX() + (70 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 60);
         }
         else{
-            this.entity.setPosition(wielder.getEntity().getX() + (15 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 10);
+            this.entity.setPosition(wielder.getEntity().getX() + (20 * this.wielder.character.getFlipper()), wielder.getEntity().getY() - length + 60);
         }
 
         if (wielder.getCharacter().getAttacking()) {

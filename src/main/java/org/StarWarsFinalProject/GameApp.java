@@ -2,6 +2,7 @@ package org.StarWarsFinalProject;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.texture.Texture;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.StarWarsFinalProject.Controller.*;
@@ -51,15 +52,23 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void initGame() {
+        Texture texture = FXGL.getAssetLoader().loadTexture("Hoth.png");
+        texture.setFitWidth(FXGL.getAppWidth());
+        texture.setFitHeight(FXGL.getAppHeight());
+
+        FXGL.entityBuilder()
+                .view(texture)
+                .zIndex(-1) // Ensure the background is behind other elements
+                .buildAndAttach();
         // create the player
         characterWeapon = new Lightsaber(5, EntityType.PLAYERWEAPON);
-        character = new Character(100, "Player", 100, 399, PLAYER_FLIPPER, characterWeapon);
-        characterView = new View(character, EntityType.PLAYER, Color.BLUE, 10, 50);
+        character = new Character(100, "Player", 100, 415, PLAYER_FLIPPER, characterWeapon);
+        characterView = new View(character, EntityType.PLAYER, "Darthvader.png", 10, 50, "redlightsaber.png");
         characterMovement = new Movement(character, EntityType.PLAYER, characterView);
 
         opponentWeapon = new Lightsaber(5,  EntityType.OPPONENTWEAPON);
         opponent = new Character(100, "Opponent", 700, 399, OPPONENT_FLIPPER, opponentWeapon);
-        opponentView = new View(opponent, EntityType.OPPONENT, Color.RED, 690, 50);
+        opponentView = new View(opponent, EntityType.OPPONENT, "lookiepookie.png", 690, 50, "bluelightsaber.png");
         opponentMovement = new Movement(opponent, EntityType.OPPONENT, opponentView);
 
 
