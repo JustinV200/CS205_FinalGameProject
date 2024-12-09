@@ -17,6 +17,10 @@ import org.StarWarsFinalProject.View.WeaponView;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
+/**
+ * the gameApp class which extends the main GameApplication method
+ * which is included in the JAVA FXGL class
+ */
 public class GameApp extends GameApplication {
 
     // create the character
@@ -31,15 +35,14 @@ public class GameApp extends GameApplication {
     private View opponentView;
     private Weapon opponentWeapon;
 
-    // health bars of the player
-
-
+    // the text and view class for the RoundCounter
     private TextView textView;
     private Text roundsCounter;
 
     // the project manager
     private ProjectManager projectManager;
 
+    // the flipper which moves the model
     final int PLAYER_FLIPPER = 1;
     final int OPPONENT_FLIPPER = -1;
 
@@ -79,7 +82,7 @@ public class GameApp extends GameApplication {
         textView = new TextView(projectManager);
         roundsCounter = textView.getRoundsCounter();
         getGameScene().addUINode(roundsCounter);
-d
+
     }
     protected void initPhysics(){
         FXGL.getPhysicsWorld().addCollisionHandler(new PlayerOpponentCollisionHandler(character, opponent));

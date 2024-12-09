@@ -23,13 +23,30 @@ import javafx.scene.paint.Color;
 import org.StarWarsFinalProject.Model.Character;
 
 
+/**
+ * the view class, which initializes the character, opponent, and healthBar entities
+ * for the game
+ */
 public class View {
 
+    /** the characterView class */
     public CharacterView characterView;
+    /** the weaponView class */
     public WeaponView weaponView;
+    /** the healthBarView class */
     public HealthBarView healthBarView;
 
 
+    /**
+     * the initializer for the view class, which initializes the specified
+     * character's, weapon, and heathBar entities in the game window
+     * @param character the character
+     * @param playerType the entity type
+     * @param characterImage the character's image
+     * @param x the x coordinate of the health bar
+     * @param y the y coordinate of the health bar
+     * @param weaponImage the weapon's image
+     */
     public View(Character character, EntityType playerType, String characterImage, int x, int y, String weaponImage ){
         this.characterView = new CharacterView(character, playerType, characterImage );
         this.weaponView = new WeaponView(character.getWeapon(), characterView, weaponImage);

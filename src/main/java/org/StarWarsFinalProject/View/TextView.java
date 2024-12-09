@@ -29,9 +29,10 @@ public class TextView {
     private Text roundsCounter;
 
     /**
-     * 
-     *
-     * @param projectManager
+     * a initializer for the textView Class which
+     * makes a text box and sets the coordinates, font,
+     * and any effects
+     * @param projectManager the project manager
      */
     public TextView(ProjectManager projectManager) {
         // initialize the text object
@@ -42,6 +43,9 @@ public class TextView {
         roundsCounter.setEffect(new javafx.scene.effect.DropShadow(10,Color.WHITE));
     }
 
+    /**
+     * @return the roundCounter text entity
+     */
     public Text getRoundsCounter() {
         return roundsCounter;
     }
