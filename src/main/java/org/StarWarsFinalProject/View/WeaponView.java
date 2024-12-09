@@ -34,7 +34,7 @@ public class WeaponView {
     private int width;
     private Rectangle rectangle;
 
-    public WeaponView(Weapon theWeapon, CharacterView wielder) {
+    public WeaponView(Weapon theWeapon, CharacterView wielder, String image) {
         this.theWeapon = theWeapon;
         this.wielder = wielder;
         this.length = 50;
@@ -47,7 +47,7 @@ public class WeaponView {
         this.entity = entityBuilder()
                 .at(wielder.getEntity().getX() + (30 * this.wielder.character.getFlipper()), (wielder.getEntity().getY() - length + 10))
                 .type(theWeapon.getType())
-                .viewWithBBox(rectangle)
+                .viewWithBBox(image)
                 .with(new CollidableComponent(true))
                 .buildAndAttach();
 

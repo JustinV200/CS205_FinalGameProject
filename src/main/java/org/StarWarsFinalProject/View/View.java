@@ -30,9 +30,9 @@ public class View {
     public HealthBarView healthBarView;
 
 
-    public View(Character character, EntityType playerType, Color color, int x, int y ){
-        this.characterView = new CharacterView(character, playerType, color);
-        this.weaponView = new WeaponView(character.getWeapon(), characterView);
+    public View(Character character, EntityType playerType, String characterImage, int x, int y, String weaponImage ){
+        this.characterView = new CharacterView(character, playerType, characterImage );
+        this.weaponView = new WeaponView(character.getWeapon(), characterView, weaponImage);
         this.healthBarView = new HealthBarView(character, x, y);
     }
 }

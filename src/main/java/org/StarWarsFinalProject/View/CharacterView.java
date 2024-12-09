@@ -44,15 +44,15 @@ public class CharacterView {
      *
      * @param character the character whose being displayed
      * @param type the type of character
-     * @param color the color of the character to be displayed
+     * @param image character to be displayed
      */
-    public CharacterView(Character character, EntityType type, Color color)  {
+    public CharacterView(Character character, EntityType type, String image)  {
         this.character = character;
         this.weapon = weapon;
         this.entity = entityBuilder()
                 .at(character.getX(), character.getY())
                 .type(type)
-                .viewWithBBox(new Rectangle(25, 25, color))
+                .viewWithBBox(image)
                 .with(new CollidableComponent(true))
                 .buildAndAttach();
         this.blaster = new Blaster(10);
