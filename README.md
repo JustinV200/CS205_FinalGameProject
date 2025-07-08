@@ -8,12 +8,12 @@ Semester: Fall 2024
 ## Team Information
 Team Name: Team 07
 
-Members of the team and their roles:
+Members of the team:
 
-- David Krumov - Scrum Master
-- Martin Lorinkov - Product Role
-- Connor Thurston - Developer
-- Justin Verlin - Developer
+- David Krumov
+- Martin Lorinkov
+- Connor Thurston
+- Justin Verlin
 
 ## Project Information
 
