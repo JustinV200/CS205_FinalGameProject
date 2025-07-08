@@ -1,3 +1,5 @@
+Re-uploaded here 7/8/2025 for archival purposes
+
 # CSCI 205 - Software Engineering and Design
 Bucknell University
 Lewisburg, PA
@@ -8,7 +10,7 @@ Semester: Fall 2024
 ## Team Information
 Team Name: Team 07
 
-Members of the team:
+Members of the team and roles:
 
 - David Krumov
 - Martin Lorinkov
