@@ -19,10 +19,4 @@ Members of the team and roles:
 
 ## Project Information
 
-
-## How to run it
-*IMPORTANT - Update this with information about how to build and run your
-project!
-## Package Structure
-## 3rd Party Libraries
-## URL to Video Presentation
+Fighting style Star Wars themed game, made using AGILE methodology
